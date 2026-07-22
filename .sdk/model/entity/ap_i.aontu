@@ -1,0 +1,163 @@
+# Entity: ap_i
+
+main: kit: entity: ap_i: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "avg_response_time"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "base_url"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "category"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "cor"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "date_added"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "description"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "documentation_url"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "endpoint"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "error_rate"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "health_score"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "id"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "last_checked"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "reliability"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tag"
+      req: false
+      type: "`$ARRAY`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "ap_i"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "category"
+                orig: "category"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 50
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "offset"
+                orig: "offset"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/list"
+          parts: [
+            "api"
+            "list"
+          ]
+          select: {
+            exist: [
+              "category"
+              "limit"
+              "offset"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/new"
+          parts: [
+            "new"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

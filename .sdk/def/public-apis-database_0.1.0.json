@@ -1,0 +1,262 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Public APIs Database",
+    "description": "This API provides a comprehensive collection of free public APIs suitable for students and developers. It features endpoints for various functionalities, allowing users to easily access and integrate multiple services into their applications.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://www.freepublicapis.com"
+    },
+    "termsOfService": "https://www.freepublicapis.com/tos"
+  },
+  "servers": [
+    {
+      "url": "https://www.freepublicapis.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/new": {
+      "get": {
+        "summary": "Add new API to the database",
+        "description": "Endpoint to access the form for adding a new API to the Public APIs Database. This endpoint allows users to submit new public APIs to be included in the collection of 624+ tested APIs.",
+        "operationId": "getNewApiForm",
+        "tags": [
+          "APIs"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved the API submission form",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string",
+                  "description": "HTML page containing the API submission form"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/list": {
+      "get": {
+        "summary": "List all public APIs",
+        "description": "Retrieve a comprehensive list of all public APIs in the database. Returns details about the 624+ tested public APIs available for students and developers.",
+        "operationId": "listApis",
+        "tags": [
+          "APIs"
+        ],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "description": "Filter APIs by category",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of APIs to return",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Offset for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "minimum": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved list of public APIs",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "description": "Total number of APIs",
+                      "example": 624
+                    },
+                    "apis": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/PublicAPI"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PublicAPI": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the API"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the API"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the API functionality"
+          },
+          "documentationUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the API documentation"
+          },
+          "baseUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "Base URL of the API"
+          },
+          "healthScore": {
+            "type": "integer",
+            "description": "Health score of the API (0-100)",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "reliability": {
+            "type": "number",
+            "format": "float",
+            "description": "Reliability percentage of the API",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "errorRate": {
+            "type": "number",
+            "format": "float",
+            "description": "Error rate percentage of the API",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "avgResponseTime": {
+            "type": "integer",
+            "description": "Average response time in milliseconds"
+          },
+          "cors": {
+            "type": "boolean",
+            "description": "Whether CORS is enabled"
+          },
+          "endpoints": {
+            "type": "integer",
+            "description": "Number of endpoints available"
+          },
+          "category": {
+            "type": "string",
+            "description": "Category of the API"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Tags associated with the API"
+          },
+          "lastChecked": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp of last health check"
+          },
+          "dateAdded": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when API was added to the database"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "description",
+          "documentationUrl"
+        ]
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "code": {
+            "type": "string",
+            "description": "Error code"
+          },
+          "details": {
+            "type": "string",
+            "description": "Additional error details"
+          }
+        },
+        "required": [
+          "error"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "APIs",
+      "description": "Operations related to public APIs in the database"
+    }
+  ],
+  "externalDocs": {
+    "description": "Public APIs Database Documentation",
+    "url": "https://www.freepublicapis.com/new"
+  }
+}

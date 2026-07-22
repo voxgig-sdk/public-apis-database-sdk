@@ -1,0 +1,26 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      auth: false
+      contact: {
+        url: "https://www.freepublicapis.com"
+      }
+      description: "This API provides a comprehensive collection of free public APIs suitable for students and developers. It features endpoints for various functionalities, allowing users to easily access and integrate multiple services into their applications."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://www.freepublicapis.com"
+        }
+      ]
+      summary: "This API provides a comprehensive collection of free public APIs suitable for students and developers."
+      termsOfService: "https://www.freepublicapis.com/tos"
+      title: "Public APIs Database"
+      version: "1.0.0"
+      website: "https://www.freepublicapis.com/new"
+    }
+  }
+}
+
