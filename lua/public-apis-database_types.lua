@@ -7,55 +7,55 @@
 -- edit by hand.
 
 ---@class ApI
----@field avg_response_time? number
----@field base_url? string
+---@field avgResponseTime? number
+---@field baseUrl? string
 ---@field category? string
----@field cor? boolean
----@field date_added? string
+---@field cors? boolean
+---@field dateAdded? string
 ---@field description string
----@field documentation_url string
----@field endpoint? number
----@field error_rate? number
----@field health_score? number
+---@field documentationUrl string
+---@field endpoints? number
+---@field errorRate? number
+---@field healthScore? number
 ---@field id string
----@field last_checked? string
+---@field lastChecked? string
 ---@field name string
 ---@field reliability? number
----@field tag? table
+---@field tags? table
 
 ---@class ApILoadMatch
----@field avg_response_time? number
----@field base_url? string
+---@field avgResponseTime? number
+---@field baseUrl? string
 ---@field category? string
----@field cor? boolean
----@field date_added? string
+---@field cors? boolean
+---@field dateAdded? string
 ---@field description? string
----@field documentation_url? string
----@field endpoint? number
----@field error_rate? number
----@field health_score? number
+---@field documentationUrl? string
+---@field endpoints? number
+---@field errorRate? number
+---@field healthScore? number
 ---@field id string
----@field last_checked? string
+---@field lastChecked? string
 ---@field name? string
 ---@field reliability? number
----@field tag? table
+---@field tags? table
 
 ---@class ApIListMatch
----@field avg_response_time? number
----@field base_url? string
+---@field avgResponseTime? number
+---@field baseUrl? string
 ---@field category? string
----@field cor? boolean
----@field date_added? string
+---@field cors? boolean
+---@field dateAdded? string
 ---@field description? string
----@field documentation_url? string
----@field endpoint? number
----@field error_rate? number
----@field health_score? number
+---@field documentationUrl? string
+---@field endpoints? number
+---@field errorRate? number
+---@field healthScore? number
 ---@field id? string
----@field last_checked? string
+---@field lastChecked? string
 ---@field name? string
 ---@field reliability? number
----@field tag? table
+---@field tags? table
 
 local M = {}
 

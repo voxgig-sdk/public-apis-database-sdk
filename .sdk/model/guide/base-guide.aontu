@@ -8,6 +8,7 @@ guide: {
   entity: ap_i: {
     path: "/api/list": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.apis`")|top
     }
     path: "/new": {
       op: load: method: *GET

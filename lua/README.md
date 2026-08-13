@@ -43,7 +43,7 @@ local apis, err = client:ApI():list()
 if err then error(err) end
 
 for _, item in ipairs(apis) do
-  print(item["id"], item["base_url"])
+  print(item["id"], item["baseUrl"])
 end
 ```
 
@@ -241,21 +241,21 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `avg_response_time` |  |
-| `base_url` |  |
+| `avgResponseTime` |  |
+| `baseUrl` |  |
 | `category` |  |
-| `cor` |  |
-| `date_added` |  |
+| `cors` |  |
+| `dateAdded` |  |
 | `description` |  |
-| `documentation_url` |  |
-| `endpoint` |  |
-| `error_rate` |  |
-| `health_score` |  |
+| `documentationUrl` |  |
+| `endpoints` |  |
+| `errorRate` |  |
+| `healthScore` |  |
 | `id` |  |
-| `last_checked` |  |
+| `lastChecked` |  |
 | `name` |  |
 | `reliability` |  |
-| `tag` |  |
+| `tags` |  |
 
 Operations: List, Load.
 
@@ -281,21 +281,21 @@ Create an instance: `local ap_i = client:ApI(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `avg_response_time` | `number` |  |
-| `base_url` | `string` |  |
+| `avgResponseTime` | `number` |  |
+| `baseUrl` | `string` |  |
 | `category` | `string` |  |
-| `cor` | `boolean` |  |
-| `date_added` | `string` |  |
+| `cors` | `boolean` |  |
+| `dateAdded` | `string` |  |
 | `description` | `string` |  |
-| `documentation_url` | `string` |  |
-| `endpoint` | `number` |  |
-| `error_rate` | `number` |  |
-| `health_score` | `number` |  |
+| `documentationUrl` | `string` |  |
+| `endpoints` | `number` |  |
+| `errorRate` | `number` |  |
+| `healthScore` | `number` |  |
 | `id` | `string` |  |
-| `last_checked` | `string` |  |
+| `lastChecked` | `string` |  |
 | `name` | `string` |  |
 | `reliability` | `number` |  |
-| `tag` | `table` |  |
+| `tags` | `table` |  |
 
 #### Example: Load
 

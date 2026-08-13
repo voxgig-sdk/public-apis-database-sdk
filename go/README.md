@@ -269,21 +269,21 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"avg_response_time"` |  |
-| `"base_url"` |  |
+| `"avgResponseTime"` |  |
+| `"baseUrl"` |  |
 | `"category"` |  |
-| `"cor"` |  |
-| `"date_added"` |  |
+| `"cors"` |  |
+| `"dateAdded"` |  |
 | `"description"` |  |
-| `"documentation_url"` |  |
-| `"endpoint"` |  |
-| `"error_rate"` |  |
-| `"health_score"` |  |
+| `"documentationUrl"` |  |
+| `"endpoints"` |  |
+| `"errorRate"` |  |
+| `"healthScore"` |  |
 | `"id"` |  |
-| `"last_checked"` |  |
+| `"lastChecked"` |  |
 | `"name"` |  |
 | `"reliability"` |  |
-| `"tag"` |  |
+| `"tags"` |  |
 
 Operations: List, Load.
 
@@ -309,21 +309,21 @@ Create an instance: `apI := client.ApI(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `avg_response_time` | `int` |  |
-| `base_url` | `string` |  |
+| `avgResponseTime` | `int` |  |
+| `baseUrl` | `string` |  |
 | `category` | `string` |  |
-| `cor` | `bool` |  |
-| `date_added` | `string` |  |
+| `cors` | `bool` |  |
+| `dateAdded` | `string` |  |
 | `description` | `string` |  |
-| `documentation_url` | `string` |  |
-| `endpoint` | `int` |  |
-| `error_rate` | `float64` |  |
-| `health_score` | `int` |  |
+| `documentationUrl` | `string` |  |
+| `endpoints` | `int` |  |
+| `errorRate` | `float64` |  |
+| `healthScore` | `int` |  |
 | `id` | `string` |  |
-| `last_checked` | `string` |  |
+| `lastChecked` | `string` |  |
 | `name` | `string` |  |
 | `reliability` | `float64` |  |
-| `tag` | `[]any` |  |
+| `tags` | `[]any` |  |
 
 #### Example: Load
 

@@ -26,8 +26,8 @@ import {
 describe('ApIEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when PUBLICAPISDATABASE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('PUBLICAPISDATABASE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when PUBLIC_APIS_DATABASE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('PUBLIC_APIS_DATABASE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = PublicApisDatabaseSDK.test()
@@ -63,13 +63,13 @@ describe('ApIEntity', async () => {
     const ap_i_ref01_ent = client.ApI()
     const ap_i_ref01_match: any = {}
 
-    const ap_i_ref01_list = await ap_i_ref01_ent.list(ap_i_ref01_match)
+    const ap_i_ref01_list = (await ap_i_ref01_ent.list(ap_i_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const ap_i_ref01_match_dt0: any = {}
     ap_i_ref01_match_dt0.id = ap_i_ref01_data.id
-    const ap_i_ref01_data_dt0 = await ap_i_ref01_ent.load(ap_i_ref01_match_dt0)
+    const ap_i_ref01_data_dt0 = (await ap_i_ref01_ent.load(ap_i_ref01_match_dt0)).data()
     assert(ap_i_ref01_data_dt0.id === ap_i_ref01_data.id)
 
 

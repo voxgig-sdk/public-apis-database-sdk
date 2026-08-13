@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from publicapisdatabase_sdk.utility.voxgig_struct import voxgig_struct as vs
 from publicapisdatabase_sdk import PublicApisDatabaseSDK
-from core import helpers
+from publicapisdatabase_sdk.core import helpers
 from test import runner
 
 
@@ -95,11 +95,11 @@ def _ap_i_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "PUBLICAPISDATABASE_TEST_AP_I_ENTID": {},
-        "PUBLICAPISDATABASE_TEST_LIVE": "FALSE",
+        "PUBLIC_APIS_DATABASE_TEST_AP_I_ENTID": {},
+        "PUBLIC_APIS_DATABASE_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("PUBLICAPISDATABASE_TEST_LIVE") == "TRUE"
+    live = env.get("PUBLIC_APIS_DATABASE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

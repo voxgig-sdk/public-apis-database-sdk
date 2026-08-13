@@ -43,8 +43,8 @@ class PublicApisDatabaseTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('PUBLICAPISDATABASE_TEST_LIVE');
-        $override = self::getenv('PUBLICAPISDATABASE_TEST_OVERRIDE');
+        $live = self::getenv('PUBLIC_APIS_DATABASE_TEST_LIVE');
+        $override = self::getenv('PUBLIC_APIS_DATABASE_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class PublicApisDatabaseTestRunner
             }
         }
 
-        $explain = self::getenv('PUBLICAPISDATABASE_TEST_EXPLAIN');
+        $explain = self::getenv('PUBLIC_APIS_DATABASE_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['PUBLICAPISDATABASE_TEST_EXPLAIN'] = $explain;
+            $m['PUBLIC_APIS_DATABASE_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

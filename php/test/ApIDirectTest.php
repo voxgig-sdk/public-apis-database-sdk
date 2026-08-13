@@ -111,11 +111,11 @@ function ap_i_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "PUBLICAPISDATABASE_TEST_AP_I_ENTID" => [],
-        "PUBLICAPISDATABASE_TEST_LIVE" => "FALSE",
+        "PUBLIC_APIS_DATABASE_TEST_AP_I_ENTID" => [],
+        "PUBLIC_APIS_DATABASE_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["PUBLICAPISDATABASE_TEST_LIVE"] === "TRUE";
+    $live = $env["PUBLIC_APIS_DATABASE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

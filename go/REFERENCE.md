@@ -98,21 +98,21 @@ fmt.Println(apI.GetName()) // "ap_i"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avg_response_time` | `int` | No |  |
-| `base_url` | `string` | No |  |
+| `avgResponseTime` | `int` | No |  |
+| `baseUrl` | `string` | No |  |
 | `category` | `string` | No |  |
-| `cor` | `bool` | No |  |
-| `date_added` | `string` | No |  |
+| `cors` | `bool` | No |  |
+| `dateAdded` | `string` | No |  |
 | `description` | `string` | Yes |  |
-| `documentation_url` | `string` | Yes |  |
-| `endpoint` | `int` | No |  |
-| `error_rate` | `float64` | No |  |
-| `health_score` | `int` | No |  |
+| `documentationUrl` | `string` | Yes |  |
+| `endpoints` | `int` | No |  |
+| `errorRate` | `float64` | No |  |
+| `healthScore` | `int` | No |  |
 | `id` | `string` | Yes |  |
-| `last_checked` | `string` | No |  |
+| `lastChecked` | `string` | No |  |
 | `name` | `string` | Yes |  |
 | `reliability` | `float64` | No |  |
-| `tag` | `[]any` | No |  |
+| `tags` | `[]any` | No |  |
 
 ### Operations
 

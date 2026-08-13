@@ -6,12 +6,12 @@ main: kit: entity: ap_i: {
 
   fields: [
     {
-      name: "avg_response_time"
+      name: "avgResponseTime"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "base_url"
+      name: "baseUrl"
       req: false
       type: "`$STRING`"
     }
@@ -21,12 +21,12 @@ main: kit: entity: ap_i: {
       type: "`$STRING`"
     }
     {
-      name: "cor"
+      name: "cors"
       req: false
       type: "`$BOOLEAN`"
     }
     {
-      name: "date_added"
+      name: "dateAdded"
       req: false
       type: "`$STRING`"
     }
@@ -36,22 +36,22 @@ main: kit: entity: ap_i: {
       type: "`$STRING`"
     }
     {
-      name: "documentation_url"
+      name: "documentationUrl"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "endpoint"
+      name: "endpoints"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "error_rate"
+      name: "errorRate"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "health_score"
+      name: "healthScore"
       req: false
       type: "`$INTEGER`"
     }
@@ -61,7 +61,7 @@ main: kit: entity: ap_i: {
       type: "`$STRING`"
     }
     {
-      name: "last_checked"
+      name: "lastChecked"
       req: false
       type: "`$STRING`"
     }
@@ -76,7 +76,7 @@ main: kit: entity: ap_i: {
       type: "`$NUMBER`"
     }
     {
-      name: "tag"
+      name: "tags"
       req: false
       type: "`$ARRAY`"
     }
@@ -135,7 +135,7 @@ main: kit: entity: ap_i: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.apis`"
           }
         }
       ]

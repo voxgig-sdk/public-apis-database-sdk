@@ -6,56 +6,56 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface ApI {
-  avg_response_time?: number
-  base_url?: string
+  avgResponseTime?: number
+  baseUrl?: string
   category?: string
-  cor?: boolean
-  date_added?: string
+  cors?: boolean
+  dateAdded?: string
   description: string
-  documentation_url: string
-  endpoint?: number
-  error_rate?: number
-  health_score?: number
+  documentationUrl: string
+  endpoints?: number
+  errorRate?: number
+  healthScore?: number
   id: string
-  last_checked?: string
+  lastChecked?: string
   name: string
   reliability?: number
-  tag?: any[]
+  tags?: any[]
 }
 
 export interface ApILoadMatch {
-  avg_response_time?: number
-  base_url?: string
+  avgResponseTime?: number
+  baseUrl?: string
   category?: string
-  cor?: boolean
-  date_added?: string
+  cors?: boolean
+  dateAdded?: string
   description?: string
-  documentation_url?: string
-  endpoint?: number
-  error_rate?: number
-  health_score?: number
+  documentationUrl?: string
+  endpoints?: number
+  errorRate?: number
+  healthScore?: number
   id: string
-  last_checked?: string
+  lastChecked?: string
   name?: string
   reliability?: number
-  tag?: any[]
+  tags?: any[]
 }
 
 export interface ApIListMatch {
-  avg_response_time?: number
-  base_url?: string
+  avgResponseTime?: number
+  baseUrl?: string
   category?: string
-  cor?: boolean
-  date_added?: string
+  cors?: boolean
+  dateAdded?: string
   description?: string
-  documentation_url?: string
-  endpoint?: number
-  error_rate?: number
-  health_score?: number
+  documentationUrl?: string
+  endpoints?: number
+  errorRate?: number
+  healthScore?: number
   id?: string
-  last_checked?: string
+  lastChecked?: string
   name?: string
   reliability?: number
-  tag?: any[]
+  tags?: any[]
 }
 

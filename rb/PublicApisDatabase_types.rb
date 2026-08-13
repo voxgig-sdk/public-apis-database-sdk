@@ -10,40 +10,40 @@
 
 # ApI entity data model.
 #
-# @!attribute [rw] avg_response_time
+# @!attribute [rw] avgResponseTime
 #   @return [Integer, nil]
 #
-# @!attribute [rw] base_url
+# @!attribute [rw] baseUrl
 #   @return [String, nil]
 #
 # @!attribute [rw] category
 #   @return [String, nil]
 #
-# @!attribute [rw] cor
+# @!attribute [rw] cors
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] date_added
+# @!attribute [rw] dateAdded
 #   @return [String, nil]
 #
 # @!attribute [rw] description
 #   @return [String]
 #
-# @!attribute [rw] documentation_url
+# @!attribute [rw] documentationUrl
 #   @return [String]
 #
-# @!attribute [rw] endpoint
+# @!attribute [rw] endpoints
 #   @return [Integer, nil]
 #
-# @!attribute [rw] error_rate
+# @!attribute [rw] errorRate
 #   @return [Float, nil]
 #
-# @!attribute [rw] health_score
+# @!attribute [rw] healthScore
 #   @return [Integer, nil]
 #
 # @!attribute [rw] id
 #   @return [String]
 #
-# @!attribute [rw] last_checked
+# @!attribute [rw] lastChecked
 #   @return [String, nil]
 #
 # @!attribute [rw] name
@@ -52,63 +52,63 @@
 # @!attribute [rw] reliability
 #   @return [Float, nil]
 #
-# @!attribute [rw] tag
+# @!attribute [rw] tags
 #   @return [Array, nil]
 ApI = Struct.new(
-  :avg_response_time,
-  :base_url,
+  :avgResponseTime,
+  :baseUrl,
   :category,
-  :cor,
-  :date_added,
+  :cors,
+  :dateAdded,
   :description,
-  :documentation_url,
-  :endpoint,
-  :error_rate,
-  :health_score,
+  :documentationUrl,
+  :endpoints,
+  :errorRate,
+  :healthScore,
   :id,
-  :last_checked,
+  :lastChecked,
   :name,
   :reliability,
-  :tag,
+  :tags,
   keyword_init: true
 )
 
 # Request payload for ApI#load.
 #
-# @!attribute [rw] avg_response_time
+# @!attribute [rw] avgResponseTime
 #   @return [Integer, nil]
 #
-# @!attribute [rw] base_url
+# @!attribute [rw] baseUrl
 #   @return [String, nil]
 #
 # @!attribute [rw] category
 #   @return [String, nil]
 #
-# @!attribute [rw] cor
+# @!attribute [rw] cors
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] date_added
+# @!attribute [rw] dateAdded
 #   @return [String, nil]
 #
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] documentation_url
+# @!attribute [rw] documentationUrl
 #   @return [String, nil]
 #
-# @!attribute [rw] endpoint
+# @!attribute [rw] endpoints
 #   @return [Integer, nil]
 #
-# @!attribute [rw] error_rate
+# @!attribute [rw] errorRate
 #   @return [Float, nil]
 #
-# @!attribute [rw] health_score
+# @!attribute [rw] healthScore
 #   @return [Integer, nil]
 #
 # @!attribute [rw] id
 #   @return [String]
 #
-# @!attribute [rw] last_checked
+# @!attribute [rw] lastChecked
 #   @return [String, nil]
 #
 # @!attribute [rw] name
@@ -117,63 +117,63 @@ ApI = Struct.new(
 # @!attribute [rw] reliability
 #   @return [Float, nil]
 #
-# @!attribute [rw] tag
+# @!attribute [rw] tags
 #   @return [Array, nil]
 ApILoadMatch = Struct.new(
-  :avg_response_time,
-  :base_url,
+  :avgResponseTime,
+  :baseUrl,
   :category,
-  :cor,
-  :date_added,
+  :cors,
+  :dateAdded,
   :description,
-  :documentation_url,
-  :endpoint,
-  :error_rate,
-  :health_score,
+  :documentationUrl,
+  :endpoints,
+  :errorRate,
+  :healthScore,
   :id,
-  :last_checked,
+  :lastChecked,
   :name,
   :reliability,
-  :tag,
+  :tags,
   keyword_init: true
 )
 
 # Request payload for ApI#list.
 #
-# @!attribute [rw] avg_response_time
+# @!attribute [rw] avgResponseTime
 #   @return [Integer, nil]
 #
-# @!attribute [rw] base_url
+# @!attribute [rw] baseUrl
 #   @return [String, nil]
 #
 # @!attribute [rw] category
 #   @return [String, nil]
 #
-# @!attribute [rw] cor
+# @!attribute [rw] cors
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] date_added
+# @!attribute [rw] dateAdded
 #   @return [String, nil]
 #
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] documentation_url
+# @!attribute [rw] documentationUrl
 #   @return [String, nil]
 #
-# @!attribute [rw] endpoint
+# @!attribute [rw] endpoints
 #   @return [Integer, nil]
 #
-# @!attribute [rw] error_rate
+# @!attribute [rw] errorRate
 #   @return [Float, nil]
 #
-# @!attribute [rw] health_score
+# @!attribute [rw] healthScore
 #   @return [Integer, nil]
 #
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] last_checked
+# @!attribute [rw] lastChecked
 #   @return [String, nil]
 #
 # @!attribute [rw] name
@@ -182,24 +182,24 @@ ApILoadMatch = Struct.new(
 # @!attribute [rw] reliability
 #   @return [Float, nil]
 #
-# @!attribute [rw] tag
+# @!attribute [rw] tags
 #   @return [Array, nil]
 ApIListMatch = Struct.new(
-  :avg_response_time,
-  :base_url,
+  :avgResponseTime,
+  :baseUrl,
   :category,
-  :cor,
-  :date_added,
+  :cors,
+  :dateAdded,
   :description,
-  :documentation_url,
-  :endpoint,
-  :error_rate,
-  :health_score,
+  :documentationUrl,
+  :endpoints,
+  :errorRate,
+  :healthScore,
   :id,
-  :last_checked,
+  :lastChecked,
   :name,
   :reliability,
-  :tag,
+  :tags,
   keyword_init: true
 )
 

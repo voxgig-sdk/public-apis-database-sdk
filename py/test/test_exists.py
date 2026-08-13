@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# PublicApisDatabase SDK exists test
 
 import pytest
 from publicapisdatabase_sdk import PublicApisDatabaseSDK

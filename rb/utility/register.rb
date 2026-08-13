@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ PublicApisDatabaseUtility.registrar = ->(u) {
   u.prepare_params = PublicApisDatabaseUtilities::PrepareParams
   u.prepare_path = PublicApisDatabaseUtilities::PreparePath
   u.prepare_query = PublicApisDatabaseUtilities::PrepareQuery
+  u.graphql_body = PublicApisDatabaseUtilities::GraphqlBody
+  u.graphql_errors = PublicApisDatabaseUtilities::GraphqlErrors
   u.result_basic = PublicApisDatabaseUtilities::ResultBasic
   u.result_body = PublicApisDatabaseUtilities::ResultBody
   u.result_headers = PublicApisDatabaseUtilities::ResultHeaders

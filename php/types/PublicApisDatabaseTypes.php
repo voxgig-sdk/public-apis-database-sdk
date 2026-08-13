@@ -15,60 +15,60 @@ declare(strict_types=1);
 /** ApI entity data model. */
 class ApI
 {
-    public ?int $avg_response_time = null;
-    public ?string $base_url = null;
+    public ?int $avgResponseTime = null;
+    public ?string $baseUrl = null;
     public ?string $category = null;
-    public ?bool $cor = null;
-    public ?string $date_added = null;
+    public ?bool $cors = null;
+    public ?string $dateAdded = null;
     public string $description;
-    public string $documentation_url;
-    public ?int $endpoint = null;
-    public ?float $error_rate = null;
-    public ?int $health_score = null;
+    public string $documentationUrl;
+    public ?int $endpoints = null;
+    public ?float $errorRate = null;
+    public ?int $healthScore = null;
     public string $id;
-    public ?string $last_checked = null;
+    public ?string $lastChecked = null;
     public string $name;
     public ?float $reliability = null;
-    public ?array $tag = null;
+    public ?array $tags = null;
 }
 
 /** Request payload for ApI#load. */
 class ApILoadMatch
 {
-    public ?int $avg_response_time = null;
-    public ?string $base_url = null;
+    public ?int $avgResponseTime = null;
+    public ?string $baseUrl = null;
     public ?string $category = null;
-    public ?bool $cor = null;
-    public ?string $date_added = null;
+    public ?bool $cors = null;
+    public ?string $dateAdded = null;
     public ?string $description = null;
-    public ?string $documentation_url = null;
-    public ?int $endpoint = null;
-    public ?float $error_rate = null;
-    public ?int $health_score = null;
+    public ?string $documentationUrl = null;
+    public ?int $endpoints = null;
+    public ?float $errorRate = null;
+    public ?int $healthScore = null;
     public string $id;
-    public ?string $last_checked = null;
+    public ?string $lastChecked = null;
     public ?string $name = null;
     public ?float $reliability = null;
-    public ?array $tag = null;
+    public ?array $tags = null;
 }
 
 /** Request payload for ApI#list. */
 class ApIListMatch
 {
-    public ?int $avg_response_time = null;
-    public ?string $base_url = null;
+    public ?int $avgResponseTime = null;
+    public ?string $baseUrl = null;
     public ?string $category = null;
-    public ?bool $cor = null;
-    public ?string $date_added = null;
+    public ?bool $cors = null;
+    public ?string $dateAdded = null;
     public ?string $description = null;
-    public ?string $documentation_url = null;
-    public ?int $endpoint = null;
-    public ?float $error_rate = null;
-    public ?int $health_score = null;
+    public ?string $documentationUrl = null;
+    public ?int $endpoints = null;
+    public ?float $errorRate = null;
+    public ?int $healthScore = null;
     public ?string $id = null;
-    public ?string $last_checked = null;
+    public ?string $lastChecked = null;
     public ?string $name = null;
     public ?float $reliability = null;
-    public ?array $tag = null;
+    public ?array $tags = null;
 }
 

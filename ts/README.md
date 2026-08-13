@@ -35,7 +35,9 @@ const client = new PublicApisDatabaseSDK()
 
 ### 2. List api records
 
-`list()` resolves to an array of ApI objects — iterate it directly:
+`list()` resolves to an array of ApI ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const apis = await client.ApI().list()
@@ -133,7 +135,8 @@ Create a mock client for unit testing — no server required:
 const client = PublicApisDatabaseSDK.test()
 
 const api = await client.ApI().list()
-// api is a bare entity populated with mock response data
+// api is the entity, populated with mock response data
+// — call api.data() for the record itself
 console.log(api)
 ```
 
@@ -299,21 +302,21 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `avg_response_time` |  |
-| `base_url` |  |
+| `avgResponseTime` |  |
+| `baseUrl` |  |
 | `category` |  |
-| `cor` |  |
-| `date_added` |  |
+| `cors` |  |
+| `dateAdded` |  |
 | `description` |  |
-| `documentation_url` |  |
-| `endpoint` |  |
-| `error_rate` |  |
-| `health_score` |  |
+| `documentationUrl` |  |
+| `endpoints` |  |
+| `errorRate` |  |
+| `healthScore` |  |
 | `id` |  |
-| `last_checked` |  |
+| `lastChecked` |  |
 | `name` |  |
 | `reliability` |  |
-| `tag` |  |
+| `tags` |  |
 
 Operations: list, load.
 
@@ -339,21 +342,21 @@ Create an instance: `const ap_i = client.ApI()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `avg_response_time` | `number` |  |
-| `base_url` | `string` |  |
+| `avgResponseTime` | `number` |  |
+| `baseUrl` | `string` |  |
 | `category` | `string` |  |
-| `cor` | `boolean` |  |
-| `date_added` | `string` |  |
+| `cors` | `boolean` |  |
+| `dateAdded` | `string` |  |
 | `description` | `string` |  |
-| `documentation_url` | `string` |  |
-| `endpoint` | `number` |  |
-| `error_rate` | `number` |  |
-| `health_score` | `number` |  |
+| `documentationUrl` | `string` |  |
+| `endpoints` | `number` |  |
+| `errorRate` | `number` |  |
+| `healthScore` | `number` |  |
 | `id` | `string` |  |
-| `last_checked` | `string` |  |
+| `lastChecked` | `string` |  |
 | `name` | `string` |  |
 | `reliability` | `number` |  |
-| `tag` | `any[]` |  |
+| `tags` | `any[]` |  |
 
 #### Example: Load
 

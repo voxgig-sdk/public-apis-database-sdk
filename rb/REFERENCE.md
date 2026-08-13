@@ -93,21 +93,21 @@ ap_i = client.ApI
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avg_response_time` | `Integer` | No |  |
-| `base_url` | `String` | No |  |
+| `avgResponseTime` | `Integer` | No |  |
+| `baseUrl` | `String` | No |  |
 | `category` | `String` | No |  |
-| `cor` | `Boolean` | No |  |
-| `date_added` | `String` | No |  |
+| `cors` | `Boolean` | No |  |
+| `dateAdded` | `String` | No |  |
 | `description` | `String` | Yes |  |
-| `documentation_url` | `String` | Yes |  |
-| `endpoint` | `Integer` | No |  |
-| `error_rate` | `Float` | No |  |
-| `health_score` | `Integer` | No |  |
+| `documentationUrl` | `String` | Yes |  |
+| `endpoints` | `Integer` | No |  |
+| `errorRate` | `Float` | No |  |
+| `healthScore` | `Integer` | No |  |
 | `id` | `String` | Yes |  |
-| `last_checked` | `String` | No |  |
+| `lastChecked` | `String` | No |  |
 | `name` | `String` | Yes |  |
 | `reliability` | `Float` | No |  |
-| `tag` | `Array` | No |  |
+| `tags` | `Array` | No |  |
 
 ### Operations
 

@@ -37,7 +37,7 @@ begin
   # list returns an Array of ApI records — iterate directly.
   apis = client.ApI.list
   apis.each do |item|
-    puts "#{item["id"]} #{item["avg_response_time"]}"
+    puts "#{item["id"]} #{item["avgResponseTime"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare ApI record (raises on error).
+  # load returns the ENTITY — call data_get for the ApI record (raises on error).
   api = client.ApI.load({ "id" => "example_id" })
   puts api
 rescue => err
@@ -134,7 +134,8 @@ client = PublicApisDatabaseSDK.test({
   "entity" => { "api" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 api = client.ApI.list()
 puts api
 ```
@@ -252,21 +253,21 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `avg_response_time` |  |
-| `base_url` |  |
+| `avgResponseTime` |  |
+| `baseUrl` |  |
 | `category` |  |
-| `cor` |  |
-| `date_added` |  |
+| `cors` |  |
+| `dateAdded` |  |
 | `description` |  |
-| `documentation_url` |  |
-| `endpoint` |  |
-| `error_rate` |  |
-| `health_score` |  |
+| `documentationUrl` |  |
+| `endpoints` |  |
+| `errorRate` |  |
+| `healthScore` |  |
 | `id` |  |
-| `last_checked` |  |
+| `lastChecked` |  |
 | `name` |  |
 | `reliability` |  |
-| `tag` |  |
+| `tags` |  |
 
 Operations: List, Load.
 
@@ -292,26 +293,26 @@ Create an instance: `ap_i = client.ApI`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `avg_response_time` | `Integer` |  |
-| `base_url` | `String` |  |
+| `avgResponseTime` | `Integer` |  |
+| `baseUrl` | `String` |  |
 | `category` | `String` |  |
-| `cor` | `Boolean` |  |
-| `date_added` | `String` |  |
+| `cors` | `Boolean` |  |
+| `dateAdded` | `String` |  |
 | `description` | `String` |  |
-| `documentation_url` | `String` |  |
-| `endpoint` | `Integer` |  |
-| `error_rate` | `Float` |  |
-| `health_score` | `Integer` |  |
+| `documentationUrl` | `String` |  |
+| `endpoints` | `Integer` |  |
+| `errorRate` | `Float` |  |
+| `healthScore` | `Integer` |  |
 | `id` | `String` |  |
-| `last_checked` | `String` |  |
+| `lastChecked` | `String` |  |
 | `name` | `String` |  |
 | `reliability` | `Float` |  |
-| `tag` | `Array` |  |
+| `tags` | `Array` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApI record (raises on error).
+# load returns the ENTITY — call data_get for the ApI record (raises on error).
 ap_i = client.ApI.load({ "id" => "ap_i_id" })
 ```
 

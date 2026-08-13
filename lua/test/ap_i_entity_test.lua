@@ -70,7 +70,7 @@ describe("ApIEntity", function()
     -- The basic flow consumes synthetic IDs from the fixture. In live mode
     -- without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup.synthetic_only then
-      pending("live entity test uses synthetic IDs from fixture — set PUBLICAPISDATABASE_TEST_AP_I_ENTID JSON to run live")
+      pending("live entity test uses synthetic IDs from fixture — set PUBLIC_APIS_DATABASE_TEST_AP_I_ENTID JSON to run live")
       return
     end
     local client = setup.client
@@ -97,7 +97,7 @@ describe("ApIEntity", function()
     }
     local ap_i_ref01_data_dt0_loaded, err = ap_i_ref01_ent:load(ap_i_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local ap_i_ref01_data_dt0_load_result = helpers.to_map(ap_i_ref01_data_dt0_loaded)
+    local ap_i_ref01_data_dt0_load_result = helpers.to_map(type(ap_i_ref01_data_dt0_loaded) == 'table' and ap_i_ref01_data_dt0_loaded.data_get and ap_i_ref01_data_dt0_loaded:data_get() or ap_i_ref01_data_dt0_loaded)
     assert.is_not_nil(ap_i_ref01_data_dt0_load_result)
     assert.are.equal(ap_i_ref01_data_dt0_load_result["id"], ap_i_ref01_data["id"])
 
@@ -136,22 +136,22 @@ function ap_i_basic_setup(extra)
   -- Detect ENTID env override before envOverride consumes it. When live
   -- mode is on without a real override, the basic test runs against synthetic
   -- IDs from the fixture and 4xx's. Surface this so the test can skip.
-  local entid_env_raw = os.getenv("PUBLICAPISDATABASE_TEST_AP_I_ENTID")
+  local entid_env_raw = os.getenv("PUBLIC_APIS_DATABASE_TEST_AP_I_ENTID")
   local idmap_overridden = entid_env_raw ~= nil and entid_env_raw:match("^%s*{") ~= nil
 
   local env = runner.env_override({
-    ["PUBLICAPISDATABASE_TEST_AP_I_ENTID"] = idmap,
-    ["PUBLICAPISDATABASE_TEST_LIVE"] = "FALSE",
-    ["PUBLICAPISDATABASE_TEST_EXPLAIN"] = "FALSE",
+    ["PUBLIC_APIS_DATABASE_TEST_AP_I_ENTID"] = idmap,
+    ["PUBLIC_APIS_DATABASE_TEST_LIVE"] = "FALSE",
+    ["PUBLIC_APIS_DATABASE_TEST_EXPLAIN"] = "FALSE",
   })
 
   local idmap_resolved = helpers.to_map(
-    env["PUBLICAPISDATABASE_TEST_AP_I_ENTID"])
+    env["PUBLIC_APIS_DATABASE_TEST_AP_I_ENTID"])
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
   end
 
-  if env["PUBLICAPISDATABASE_TEST_LIVE"] == "TRUE" then
+  if env["PUBLIC_APIS_DATABASE_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
       },
@@ -160,13 +160,13 @@ function ap_i_basic_setup(extra)
     client = sdk.new(helpers.to_map(merged_opts))
   end
 
-  local live = env["PUBLICAPISDATABASE_TEST_LIVE"] == "TRUE"
+  local live = env["PUBLIC_APIS_DATABASE_TEST_LIVE"] == "TRUE"
   return {
     client = client,
     data = entity_data,
     idmap = idmap_resolved,
     env = env,
-    explain = env["PUBLICAPISDATABASE_TEST_EXPLAIN"] == "TRUE",
+    explain = env["PUBLIC_APIS_DATABASE_TEST_EXPLAIN"] == "TRUE",
     live = live,
     synthetic_only = live and not idmap_overridden,
     now = os.time() * 1000,

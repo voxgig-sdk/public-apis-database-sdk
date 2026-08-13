@@ -32,14 +32,14 @@ class PublicApisDatabaseConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'avg_response_time',
+              'name' => 'avgResponseTime',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 0,
             ],
             [
               'active' => true,
-              'name' => 'base_url',
+              'name' => 'baseUrl',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 1,
@@ -53,14 +53,14 @@ class PublicApisDatabaseConfig
             ],
             [
               'active' => true,
-              'name' => 'cor',
+              'name' => 'cors',
               'req' => false,
               'type' => '`$BOOLEAN`',
               'index$' => 3,
             ],
             [
               'active' => true,
-              'name' => 'date_added',
+              'name' => 'dateAdded',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 4,
@@ -74,28 +74,28 @@ class PublicApisDatabaseConfig
             ],
             [
               'active' => true,
-              'name' => 'documentation_url',
+              'name' => 'documentationUrl',
               'req' => true,
               'type' => '`$STRING`',
               'index$' => 6,
             ],
             [
               'active' => true,
-              'name' => 'endpoint',
+              'name' => 'endpoints',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 7,
             ],
             [
               'active' => true,
-              'name' => 'error_rate',
+              'name' => 'errorRate',
               'req' => false,
               'type' => '`$NUMBER`',
               'index$' => 8,
             ],
             [
               'active' => true,
-              'name' => 'health_score',
+              'name' => 'healthScore',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 9,
@@ -109,7 +109,7 @@ class PublicApisDatabaseConfig
             ],
             [
               'active' => true,
-              'name' => 'last_checked',
+              'name' => 'lastChecked',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 11,
@@ -130,7 +130,7 @@ class PublicApisDatabaseConfig
             ],
             [
               'active' => true,
-              'name' => 'tag',
+              'name' => 'tags',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 14,
@@ -174,6 +174,7 @@ class PublicApisDatabaseConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/list',
                   'parts' => [
@@ -189,7 +190,7 @@ class PublicApisDatabaseConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.apis`',
                   ],
                   'index$' => 0,
                 ],
@@ -203,6 +204,7 @@ class PublicApisDatabaseConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/new',
                   'parts' => [

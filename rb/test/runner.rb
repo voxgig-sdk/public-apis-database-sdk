@@ -23,8 +23,8 @@ module PublicApisDatabaseTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("PUBLICAPISDATABASE_TEST_LIVE")
-    override = getenv("PUBLICAPISDATABASE_TEST_OVERRIDE")
+    live = getenv("PUBLIC_APIS_DATABASE_TEST_LIVE")
+    override = getenv("PUBLIC_APIS_DATABASE_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module PublicApisDatabaseTestRunner
       end
     end
 
-    explain = getenv("PUBLICAPISDATABASE_TEST_EXPLAIN")
-    m["PUBLICAPISDATABASE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("PUBLIC_APIS_DATABASE_TEST_EXPLAIN")
+    m["PUBLIC_APIS_DATABASE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

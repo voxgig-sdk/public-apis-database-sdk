@@ -116,21 +116,21 @@ const ap_i = client.ApI()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avg_response_time` | `number` | No |  |
-| `base_url` | `string` | No |  |
+| `avgResponseTime` | `number` | No |  |
+| `baseUrl` | `string` | No |  |
 | `category` | `string` | No |  |
-| `cor` | `boolean` | No |  |
-| `date_added` | `string` | No |  |
+| `cors` | `boolean` | No |  |
+| `dateAdded` | `string` | No |  |
 | `description` | `string` | Yes |  |
-| `documentation_url` | `string` | Yes |  |
-| `endpoint` | `number` | No |  |
-| `error_rate` | `number` | No |  |
-| `health_score` | `number` | No |  |
+| `documentationUrl` | `string` | Yes |  |
+| `endpoints` | `number` | No |  |
+| `errorRate` | `number` | No |  |
+| `healthScore` | `number` | No |  |
 | `id` | `string` | Yes |  |
-| `last_checked` | `string` | No |  |
+| `lastChecked` | `string` | No |  |
 | `name` | `string` | Yes |  |
 | `reliability` | `number` | No |  |
-| `tag` | `any[]` | No |  |
+| `tags` | `any[]` | No |  |
 
 ### Operations
 

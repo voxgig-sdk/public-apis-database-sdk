@@ -52,7 +52,7 @@ except Exception as err:
 
 ### 3. Load an api
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -136,7 +136,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = PublicApisDatabaseSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 api = client.ApI().list()
 # api contains the mock response record
 ```
@@ -233,7 +234,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -255,21 +256,21 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `avg_response_time` |  |
-| `base_url` |  |
+| `avgResponseTime` |  |
+| `baseUrl` |  |
 | `category` |  |
-| `cor` |  |
-| `date_added` |  |
+| `cors` |  |
+| `dateAdded` |  |
 | `description` |  |
-| `documentation_url` |  |
-| `endpoint` |  |
-| `error_rate` |  |
-| `health_score` |  |
+| `documentationUrl` |  |
+| `endpoints` |  |
+| `errorRate` |  |
+| `healthScore` |  |
 | `id` |  |
-| `last_checked` |  |
+| `lastChecked` |  |
 | `name` |  |
 | `reliability` |  |
-| `tag` |  |
+| `tags` |  |
 
 Operations: List, Load.
 
@@ -295,21 +296,21 @@ Create an instance: `ap_i = client.ApI()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `avg_response_time` | `int` |  |
-| `base_url` | `str` |  |
+| `avgResponseTime` | `int` |  |
+| `baseUrl` | `str` |  |
 | `category` | `str` |  |
-| `cor` | `bool` |  |
-| `date_added` | `str` |  |
+| `cors` | `bool` |  |
+| `dateAdded` | `str` |  |
 | `description` | `str` |  |
-| `documentation_url` | `str` |  |
-| `endpoint` | `int` |  |
-| `error_rate` | `float` |  |
-| `health_score` | `int` |  |
+| `documentationUrl` | `str` |  |
+| `endpoints` | `int` |  |
+| `errorRate` | `float` |  |
+| `healthScore` | `int` |  |
 | `id` | `str` |  |
-| `last_checked` | `str` |  |
+| `lastChecked` | `str` |  |
 | `name` | `str` |  |
 | `reliability` | `float` |  |
-| `tag` | `list` |  |
+| `tags` | `list` |  |
 
 #### Example: Load
 

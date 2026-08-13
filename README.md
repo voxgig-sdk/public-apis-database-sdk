@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = PublicApisDatabaseSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = PublicApisDatabaseSDK.test({
+  entity: {
+    ap_i: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const apis = await client.ApI().list()
-// apis is an array of bare ApI records populated with mock data
+// apis is an array of ApI entities, populated with mock data
+// — call apis[0].data() for the record itself
 console.log(apis)
 ```
 
@@ -110,7 +119,7 @@ import { PublicApisDatabaseSDK } from '@voxgig-sdk/public-apis-database'
 
 const client = new PublicApisDatabaseSDK()
 
-// List all apis (returns ApI[])
+// List all apis (returns ApIEntity[] — .data() for the record)
 const apis = await client.ApI().list()
 for (const api of apis) {
   console.log(api)
@@ -191,7 +200,7 @@ $client = new PublicApisDatabaseSDK();
 $apis = $client->ApI()->list();
 print_r($apis);
 
-// Load a specific api (returns the bare record; throws on error)
+// Load a specific api (returns the ENTITY; call data_get() for the record; throws on error)
 $api = $client->ApI()->load(["id" => "example_id"]);
 print_r($api);
 ```
@@ -222,7 +231,7 @@ client = PublicApisDatabaseSDK.new
 apis = client.ApI.list
 puts apis
 
-# Load a specific api (returns the bare record; raises on error)
+# Load a specific api (returns the ENTITY; call data_get for the record)
 api = client.ApI.load({ "id" => "example_id" })
 puts api
 ```
@@ -359,6 +368,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://www.freepublicapis.com](https://www.freepublicapis.com)
 

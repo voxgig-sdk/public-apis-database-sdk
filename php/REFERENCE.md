@@ -92,21 +92,21 @@ $ap_i = $client->ApI();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avg_response_time` | `int` | No |  |
-| `base_url` | `string` | No |  |
+| `avgResponseTime` | `int` | No |  |
+| `baseUrl` | `string` | No |  |
 | `category` | `string` | No |  |
-| `cor` | `bool` | No |  |
-| `date_added` | `string` | No |  |
+| `cors` | `bool` | No |  |
+| `dateAdded` | `string` | No |  |
 | `description` | `string` | Yes |  |
-| `documentation_url` | `string` | Yes |  |
-| `endpoint` | `int` | No |  |
-| `error_rate` | `float` | No |  |
-| `health_score` | `int` | No |  |
+| `documentationUrl` | `string` | Yes |  |
+| `endpoints` | `int` | No |  |
+| `errorRate` | `float` | No |  |
+| `healthScore` | `int` | No |  |
 | `id` | `string` | Yes |  |
-| `last_checked` | `string` | No |  |
+| `lastChecked` | `string` | No |  |
 | `name` | `string` | Yes |  |
 | `reliability` | `float` | No |  |
-| `tag` | `array` | No |  |
+| `tags` | `array` | No |  |
 
 ### Operations
 

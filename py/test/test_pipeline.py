@@ -16,11 +16,11 @@
 import pytest
 
 from publicapisdatabase_sdk import PublicApisDatabaseSDK
-from core.error import PublicApisDatabaseError
-from core.result import PublicApisDatabaseResult
-from core.response import PublicApisDatabaseResponse
-from core.spec import PublicApisDatabaseSpec
-from feature.base_feature import PublicApisDatabaseBaseFeature
+from publicapisdatabase_sdk.core.error import PublicApisDatabaseError
+from publicapisdatabase_sdk.core.result import PublicApisDatabaseResult
+from publicapisdatabase_sdk.core.response import PublicApisDatabaseResponse
+from publicapisdatabase_sdk.core.spec import PublicApisDatabaseSpec
+from publicapisdatabase_sdk.feature.base_feature import PublicApisDatabaseBaseFeature
 
 
 def _client():

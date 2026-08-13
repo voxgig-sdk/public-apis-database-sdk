@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import PublicApisDatabaseControl
-from core.error import PublicApisDatabaseError
-from core.result import PublicApisDatabaseResult
-from core.spec import PublicApisDatabaseSpec
+from publicapisdatabase_sdk.config import make_config
+from publicapisdatabase_sdk.features import _make_feature
+from publicapisdatabase_sdk.core.control import PublicApisDatabaseControl
+from publicapisdatabase_sdk.core.error import PublicApisDatabaseError
+from publicapisdatabase_sdk.core.result import PublicApisDatabaseResult
+from publicapisdatabase_sdk.core.spec import PublicApisDatabaseSpec
 
 
 # True when this SDK was generated with the named feature.

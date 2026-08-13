@@ -26,14 +26,14 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "avg_response_time",
+            ["name"] = "avgResponseTime",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "base_url",
+            ["name"] = "baseUrl",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
@@ -47,14 +47,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "cor",
+            ["name"] = "cors",
             ["req"] = false,
             ["type"] = "`$BOOLEAN`",
             ["index$"] = 3,
           },
           {
             ["active"] = true,
-            ["name"] = "date_added",
+            ["name"] = "dateAdded",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 4,
@@ -68,28 +68,28 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "documentation_url",
+            ["name"] = "documentationUrl",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 6,
           },
           {
             ["active"] = true,
-            ["name"] = "endpoint",
+            ["name"] = "endpoints",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 7,
           },
           {
             ["active"] = true,
-            ["name"] = "error_rate",
+            ["name"] = "errorRate",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 8,
           },
           {
             ["active"] = true,
-            ["name"] = "health_score",
+            ["name"] = "healthScore",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 9,
@@ -103,7 +103,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "last_checked",
+            ["name"] = "lastChecked",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 11,
@@ -124,7 +124,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "tag",
+            ["name"] = "tags",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 14,
@@ -168,6 +168,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/list",
                 ["parts"] = {
@@ -183,7 +184,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.apis`",
                 },
                 ["index$"] = 0,
               },
@@ -197,6 +198,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/new",
                 ["parts"] = {

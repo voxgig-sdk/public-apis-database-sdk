@@ -87,21 +87,21 @@ ap_i = client.ApI()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avg_response_time` | `int` | No |  |
-| `base_url` | `str` | No |  |
+| `avgResponseTime` | `int` | No |  |
+| `baseUrl` | `str` | No |  |
 | `category` | `str` | No |  |
-| `cor` | `bool` | No |  |
-| `date_added` | `str` | No |  |
+| `cors` | `bool` | No |  |
+| `dateAdded` | `str` | No |  |
 | `description` | `str` | Yes |  |
-| `documentation_url` | `str` | Yes |  |
-| `endpoint` | `int` | No |  |
-| `error_rate` | `float` | No |  |
-| `health_score` | `int` | No |  |
+| `documentationUrl` | `str` | Yes |  |
+| `endpoints` | `int` | No |  |
+| `errorRate` | `float` | No |  |
+| `healthScore` | `int` | No |  |
 | `id` | `str` | Yes |  |
-| `last_checked` | `str` | No |  |
+| `lastChecked` | `str` | No |  |
 | `name` | `str` | Yes |  |
 | `reliability` | `float` | No |  |
-| `tag` | `list` | No |  |
+| `tags` | `list` | No |  |
 
 ### Operations
 

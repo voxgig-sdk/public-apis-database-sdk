@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ PublicApisDatabaseUtility::setRegistrar(function (PublicApisDatabaseUtility $u):
     $u->prepare_params = [PublicApisDatabasePrepareParams::class, 'call'];
     $u->prepare_path = [PublicApisDatabasePreparePath::class, 'call'];
     $u->prepare_query = [PublicApisDatabasePrepareQuery::class, 'call'];
+    $u->graphql_body = [PublicApisDatabaseGraphql::class, 'body'];
+    $u->graphql_errors = [PublicApisDatabaseGraphql::class, 'errors'];
     $u->result_basic = [PublicApisDatabaseResultBasic::class, 'call'];
     $u->result_body = [PublicApisDatabaseResultBody::class, 'call'];
     $u->result_headers = [PublicApisDatabaseResultHeaders::class, 'call'];

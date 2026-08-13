@@ -105,11 +105,11 @@ function ap_i_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["PUBLICAPISDATABASE_TEST_AP_I_ENTID"] = {},
-    ["PUBLICAPISDATABASE_TEST_LIVE"] = "FALSE",
+    ["PUBLIC_APIS_DATABASE_TEST_AP_I_ENTID"] = {},
+    ["PUBLIC_APIS_DATABASE_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["PUBLICAPISDATABASE_TEST_LIVE"] == "TRUE"
+  local live = env["PUBLIC_APIS_DATABASE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
