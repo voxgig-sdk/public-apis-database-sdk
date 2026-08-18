@@ -23,6 +23,7 @@ build = {
   modules = {
     ["public-apis-database_sdk"] = "public-apis-database_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }

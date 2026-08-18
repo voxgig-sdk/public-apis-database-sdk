@@ -15,7 +15,7 @@ require_relative "../PublicApisDatabase_sdk"
 module PublicApisDatabaseFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = PublicApisDatabaseConfig.make_config["feature"]
+    f = PublicApisDatabaseConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from publicapisdatabase_sdk.config import make_config
+from publicapisdatabase_sdk.config import shared_config
 from publicapisdatabase_sdk.features import _make_feature
 from publicapisdatabase_sdk.core.control import PublicApisDatabaseControl
 from publicapisdatabase_sdk.core.error import PublicApisDatabaseError
@@ -24,7 +24,7 @@ from publicapisdatabase_sdk.core.spec import PublicApisDatabaseSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

@@ -40,7 +40,7 @@ class PublicApisDatabaseSDK
         $utility = new PublicApisDatabaseUtility();
         $this->_utility = $utility;
 
-        $config = PublicApisDatabaseConfig::make_config();
+        $config = PublicApisDatabaseConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

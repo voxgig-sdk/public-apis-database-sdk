@@ -28,7 +28,7 @@ class PublicApisDatabaseSDK
     utility = PublicApisDatabaseUtility.new
     @_utility = utility
 
-    config = PublicApisDatabaseConfig.make_config
+    config = PublicApisDatabaseConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
