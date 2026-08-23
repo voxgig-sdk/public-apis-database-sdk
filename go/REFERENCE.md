@@ -98,21 +98,21 @@ fmt.Println(apI.GetName()) // "ap_i"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avgResponseTime` | `int` | No |  |
-| `baseUrl` | `string` | No |  |
-| `category` | `string` | No |  |
-| `cors` | `bool` | No |  |
-| `dateAdded` | `string` | No |  |
-| `description` | `string` | Yes |  |
-| `documentationUrl` | `string` | Yes |  |
-| `endpoints` | `int` | No |  |
-| `errorRate` | `float64` | No |  |
-| `healthScore` | `int` | No |  |
-| `id` | `string` | Yes |  |
-| `lastChecked` | `string` | No |  |
-| `name` | `string` | Yes |  |
-| `reliability` | `float64` | No |  |
-| `tags` | `[]any` | No |  |
+| `avgResponseTime` | `int` | No | Average response time in milliseconds |
+| `baseUrl` | `string` | No | Base URL of the API |
+| `category` | `string` | No | Category of the API |
+| `cors` | `bool` | No | Whether CORS is enabled |
+| `dateAdded` | `string` | No | Timestamp when API was added to the database |
+| `description` | `string` | Yes | Description of the API functionality |
+| `documentationUrl` | `string` | Yes | URL to the API documentation |
+| `endpoints` | `int` | No | Number of endpoints available |
+| `errorRate` | `float64` | No | Error rate percentage of the API |
+| `healthScore` | `int` | No | Health score of the API (0-100) |
+| `id` | `string` | Yes | Unique identifier for the API |
+| `lastChecked` | `string` | No | Timestamp of last health check |
+| `name` | `string` | Yes | Name of the API |
+| `reliability` | `float64` | No | Reliability percentage of the API |
+| `tags` | `[]any` | No | Tags associated with the API |
 
 ### Operations
 

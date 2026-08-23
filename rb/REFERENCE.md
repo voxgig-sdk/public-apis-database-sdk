@@ -93,21 +93,21 @@ ap_i = client.ApI
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avgResponseTime` | `Integer` | No |  |
-| `baseUrl` | `String` | No |  |
-| `category` | `String` | No |  |
-| `cors` | `Boolean` | No |  |
-| `dateAdded` | `String` | No |  |
-| `description` | `String` | Yes |  |
-| `documentationUrl` | `String` | Yes |  |
-| `endpoints` | `Integer` | No |  |
-| `errorRate` | `Float` | No |  |
-| `healthScore` | `Integer` | No |  |
-| `id` | `String` | Yes |  |
-| `lastChecked` | `String` | No |  |
-| `name` | `String` | Yes |  |
-| `reliability` | `Float` | No |  |
-| `tags` | `Array` | No |  |
+| `avgResponseTime` | `Integer` | No | Average response time in milliseconds |
+| `baseUrl` | `String` | No | Base URL of the API |
+| `category` | `String` | No | Category of the API |
+| `cors` | `Boolean` | No | Whether CORS is enabled |
+| `dateAdded` | `String` | No | Timestamp when API was added to the database |
+| `description` | `String` | Yes | Description of the API functionality |
+| `documentationUrl` | `String` | Yes | URL to the API documentation |
+| `endpoints` | `Integer` | No | Number of endpoints available |
+| `errorRate` | `Float` | No | Error rate percentage of the API |
+| `healthScore` | `Integer` | No | Health score of the API (0-100) |
+| `id` | `String` | Yes | Unique identifier for the API |
+| `lastChecked` | `String` | No | Timestamp of last health check |
+| `name` | `String` | Yes | Name of the API |
+| `reliability` | `Float` | No | Reliability percentage of the API |
+| `tags` | `Array` | No | Tags associated with the API |
 
 ### Operations
 

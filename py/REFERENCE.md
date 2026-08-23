@@ -87,21 +87,21 @@ ap_i = client.ApI()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avgResponseTime` | `int` | No |  |
-| `baseUrl` | `str` | No |  |
-| `category` | `str` | No |  |
-| `cors` | `bool` | No |  |
-| `dateAdded` | `str` | No |  |
-| `description` | `str` | Yes |  |
-| `documentationUrl` | `str` | Yes |  |
-| `endpoints` | `int` | No |  |
-| `errorRate` | `float` | No |  |
-| `healthScore` | `int` | No |  |
-| `id` | `str` | Yes |  |
-| `lastChecked` | `str` | No |  |
-| `name` | `str` | Yes |  |
-| `reliability` | `float` | No |  |
-| `tags` | `list` | No |  |
+| `avgResponseTime` | `int` | No | Average response time in milliseconds |
+| `baseUrl` | `str` | No | Base URL of the API |
+| `category` | `str` | No | Category of the API |
+| `cors` | `bool` | No | Whether CORS is enabled |
+| `dateAdded` | `str` | No | Timestamp when API was added to the database |
+| `description` | `str` | Yes | Description of the API functionality |
+| `documentationUrl` | `str` | Yes | URL to the API documentation |
+| `endpoints` | `int` | No | Number of endpoints available |
+| `errorRate` | `float` | No | Error rate percentage of the API |
+| `healthScore` | `int` | No | Health score of the API (0-100) |
+| `id` | `str` | Yes | Unique identifier for the API |
+| `lastChecked` | `str` | No | Timestamp of last health check |
+| `name` | `str` | Yes | Name of the API |
+| `reliability` | `float` | No | Reliability percentage of the API |
+| `tags` | `list` | No | Tags associated with the API |
 
 ### Operations
 

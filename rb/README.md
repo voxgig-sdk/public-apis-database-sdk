@@ -253,21 +253,21 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `avgResponseTime` |  |
-| `baseUrl` |  |
-| `category` |  |
-| `cors` |  |
-| `dateAdded` |  |
-| `description` |  |
-| `documentationUrl` |  |
-| `endpoints` |  |
-| `errorRate` |  |
-| `healthScore` |  |
-| `id` |  |
-| `lastChecked` |  |
-| `name` |  |
-| `reliability` |  |
-| `tags` |  |
+| `avgResponseTime` | Average response time in milliseconds |
+| `baseUrl` | Base URL of the API |
+| `category` | Category of the API |
+| `cors` | Whether CORS is enabled |
+| `dateAdded` | Timestamp when API was added to the database |
+| `description` | Description of the API functionality |
+| `documentationUrl` | URL to the API documentation |
+| `endpoints` | Number of endpoints available |
+| `errorRate` | Error rate percentage of the API |
+| `healthScore` | Health score of the API (0-100) |
+| `id` | Unique identifier for the API |
+| `lastChecked` | Timestamp of last health check |
+| `name` | Name of the API |
+| `reliability` | Reliability percentage of the API |
+| `tags` | Tags associated with the API |
 
 Operations: List, Load.
 
@@ -293,21 +293,21 @@ Create an instance: `ap_i = client.ApI`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `avgResponseTime` | `Integer` |  |
-| `baseUrl` | `String` |  |
-| `category` | `String` |  |
-| `cors` | `Boolean` |  |
-| `dateAdded` | `String` |  |
-| `description` | `String` |  |
-| `documentationUrl` | `String` |  |
-| `endpoints` | `Integer` |  |
-| `errorRate` | `Float` |  |
-| `healthScore` | `Integer` |  |
-| `id` | `String` |  |
-| `lastChecked` | `String` |  |
-| `name` | `String` |  |
-| `reliability` | `Float` |  |
-| `tags` | `Array` |  |
+| `avgResponseTime` | `Integer` | Average response time in milliseconds |
+| `baseUrl` | `String` | Base URL of the API |
+| `category` | `String` | Category of the API |
+| `cors` | `Boolean` | Whether CORS is enabled |
+| `dateAdded` | `String` | Timestamp when API was added to the database |
+| `description` | `String` | Description of the API functionality |
+| `documentationUrl` | `String` | URL to the API documentation |
+| `endpoints` | `Integer` | Number of endpoints available |
+| `errorRate` | `Float` | Error rate percentage of the API |
+| `healthScore` | `Integer` | Health score of the API (0-100) |
+| `id` | `String` | Unique identifier for the API |
+| `lastChecked` | `String` | Timestamp of last health check |
+| `name` | `String` | Name of the API |
+| `reliability` | `Float` | Reliability percentage of the API |
+| `tags` | `Array` | Tags associated with the API |
 
 #### Example: Load
 

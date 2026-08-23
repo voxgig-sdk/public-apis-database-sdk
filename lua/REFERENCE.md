@@ -90,21 +90,21 @@ local ap_i = client:ApI(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avgResponseTime` | `number` | No |  |
-| `baseUrl` | `string` | No |  |
-| `category` | `string` | No |  |
-| `cors` | `boolean` | No |  |
-| `dateAdded` | `string` | No |  |
-| `description` | `string` | Yes |  |
-| `documentationUrl` | `string` | Yes |  |
-| `endpoints` | `number` | No |  |
-| `errorRate` | `number` | No |  |
-| `healthScore` | `number` | No |  |
-| `id` | `string` | Yes |  |
-| `lastChecked` | `string` | No |  |
-| `name` | `string` | Yes |  |
-| `reliability` | `number` | No |  |
-| `tags` | `table` | No |  |
+| `avgResponseTime` | `number` | No | Average response time in milliseconds |
+| `baseUrl` | `string` | No | Base URL of the API |
+| `category` | `string` | No | Category of the API |
+| `cors` | `boolean` | No | Whether CORS is enabled |
+| `dateAdded` | `string` | No | Timestamp when API was added to the database |
+| `description` | `string` | Yes | Description of the API functionality |
+| `documentationUrl` | `string` | Yes | URL to the API documentation |
+| `endpoints` | `number` | No | Number of endpoints available |
+| `errorRate` | `number` | No | Error rate percentage of the API |
+| `healthScore` | `number` | No | Health score of the API (0-100) |
+| `id` | `string` | Yes | Unique identifier for the API |
+| `lastChecked` | `string` | No | Timestamp of last health check |
+| `name` | `string` | Yes | Name of the API |
+| `reliability` | `number` | No | Reliability percentage of the API |
+| `tags` | `table` | No | Tags associated with the API |
 
 ### Operations
 

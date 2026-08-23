@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -302,21 +302,21 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `avgResponseTime` |  |
-| `baseUrl` |  |
-| `category` |  |
-| `cors` |  |
-| `dateAdded` |  |
-| `description` |  |
-| `documentationUrl` |  |
-| `endpoints` |  |
-| `errorRate` |  |
-| `healthScore` |  |
-| `id` |  |
-| `lastChecked` |  |
-| `name` |  |
-| `reliability` |  |
-| `tags` |  |
+| `avgResponseTime` | Average response time in milliseconds |
+| `baseUrl` | Base URL of the API |
+| `category` | Category of the API |
+| `cors` | Whether CORS is enabled |
+| `dateAdded` | Timestamp when API was added to the database |
+| `description` | Description of the API functionality |
+| `documentationUrl` | URL to the API documentation |
+| `endpoints` | Number of endpoints available |
+| `errorRate` | Error rate percentage of the API |
+| `healthScore` | Health score of the API (0-100) |
+| `id` | Unique identifier for the API |
+| `lastChecked` | Timestamp of last health check |
+| `name` | Name of the API |
+| `reliability` | Reliability percentage of the API |
+| `tags` | Tags associated with the API |
 
 Operations: list, load.
 
@@ -342,21 +342,21 @@ Create an instance: `const ap_i = client.ApI()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `avgResponseTime` | `number` |  |
-| `baseUrl` | `string` |  |
-| `category` | `string` |  |
-| `cors` | `boolean` |  |
-| `dateAdded` | `string` |  |
-| `description` | `string` |  |
-| `documentationUrl` | `string` |  |
-| `endpoints` | `number` |  |
-| `errorRate` | `number` |  |
-| `healthScore` | `number` |  |
-| `id` | `string` |  |
-| `lastChecked` | `string` |  |
-| `name` | `string` |  |
-| `reliability` | `number` |  |
-| `tags` | `any[]` |  |
+| `avgResponseTime` | `number` | Average response time in milliseconds |
+| `baseUrl` | `string` | Base URL of the API |
+| `category` | `string` | Category of the API |
+| `cors` | `boolean` | Whether CORS is enabled |
+| `dateAdded` | `string` | Timestamp when API was added to the database |
+| `description` | `string` | Description of the API functionality |
+| `documentationUrl` | `string` | URL to the API documentation |
+| `endpoints` | `number` | Number of endpoints available |
+| `errorRate` | `number` | Error rate percentage of the API |
+| `healthScore` | `number` | Health score of the API (0-100) |
+| `id` | `string` | Unique identifier for the API |
+| `lastChecked` | `string` | Timestamp of last health check |
+| `name` | `string` | Name of the API |
+| `reliability` | `number` | Reliability percentage of the API |
+| `tags` | `any[]` | Tags associated with the API |
 
 #### Example: Load
 

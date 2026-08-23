@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'PublicApisDatabase',
+        slug: "public-apis-database",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -56,66 +67,81 @@ class Config {
       "fields": [
         {
           "name": "avgResponseTime",
+          "short": "Average response time in milliseconds",
           "type": "`$INTEGER`"
         },
         {
           "name": "baseUrl",
+          "short": "Base URL of the API",
           "type": "`$STRING`"
         },
         {
           "name": "category",
+          "short": "Category of the API",
           "type": "`$STRING`"
         },
         {
           "name": "cors",
+          "short": "Whether CORS is enabled",
           "type": "`$BOOLEAN`"
         },
         {
           "name": "dateAdded",
+          "short": "Timestamp when API was added to the database",
           "type": "`$STRING`"
         },
         {
           "name": "description",
           "req": true,
+          "short": "Description of the API functionality",
           "type": "`$STRING`"
         },
         {
           "name": "documentationUrl",
           "req": true,
+          "short": "URL to the API documentation",
           "type": "`$STRING`"
         },
         {
           "name": "endpoints",
+          "short": "Number of endpoints available",
           "type": "`$INTEGER`"
         },
         {
           "name": "errorRate",
+          "short": "Error rate percentage of the API",
           "type": "`$NUMBER`"
         },
         {
           "name": "healthScore",
+          "short": "Health score of the API (0-100)",
           "type": "`$INTEGER`"
         },
         {
           "name": "id",
           "req": true,
+          "short": "Unique identifier for the API",
           "type": "`$STRING`"
         },
         {
           "name": "lastChecked",
+          "short": "Timestamp of last health check",
           "type": "`$STRING`"
         },
         {
           "name": "name",
           "req": true,
+          "short": "Name of the API",
           "type": "`$STRING`"
         },
         {
           "name": "reliability",
+          "short": "Reliability percentage of the API",
           "type": "`$NUMBER`"
         },
         {
           "name": "tags",
+          "short": "Tags associated with the API",
           "type": "`$ARRAY`"
         }
       ],

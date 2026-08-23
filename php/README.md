@@ -263,21 +263,21 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `avgResponseTime` |  |
-| `baseUrl` |  |
-| `category` |  |
-| `cors` |  |
-| `dateAdded` |  |
-| `description` |  |
-| `documentationUrl` |  |
-| `endpoints` |  |
-| `errorRate` |  |
-| `healthScore` |  |
-| `id` |  |
-| `lastChecked` |  |
-| `name` |  |
-| `reliability` |  |
-| `tags` |  |
+| `avgResponseTime` | Average response time in milliseconds |
+| `baseUrl` | Base URL of the API |
+| `category` | Category of the API |
+| `cors` | Whether CORS is enabled |
+| `dateAdded` | Timestamp when API was added to the database |
+| `description` | Description of the API functionality |
+| `documentationUrl` | URL to the API documentation |
+| `endpoints` | Number of endpoints available |
+| `errorRate` | Error rate percentage of the API |
+| `healthScore` | Health score of the API (0-100) |
+| `id` | Unique identifier for the API |
+| `lastChecked` | Timestamp of last health check |
+| `name` | Name of the API |
+| `reliability` | Reliability percentage of the API |
+| `tags` | Tags associated with the API |
 
 Operations: List, Load.
 
@@ -303,21 +303,21 @@ Create an instance: `$ap_i = $client->ApI();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `avgResponseTime` | `int` |  |
-| `baseUrl` | `string` |  |
-| `category` | `string` |  |
-| `cors` | `bool` |  |
-| `dateAdded` | `string` |  |
-| `description` | `string` |  |
-| `documentationUrl` | `string` |  |
-| `endpoints` | `int` |  |
-| `errorRate` | `float` |  |
-| `healthScore` | `int` |  |
-| `id` | `string` |  |
-| `lastChecked` | `string` |  |
-| `name` | `string` |  |
-| `reliability` | `float` |  |
-| `tags` | `array` |  |
+| `avgResponseTime` | `int` | Average response time in milliseconds |
+| `baseUrl` | `string` | Base URL of the API |
+| `category` | `string` | Category of the API |
+| `cors` | `bool` | Whether CORS is enabled |
+| `dateAdded` | `string` | Timestamp when API was added to the database |
+| `description` | `string` | Description of the API functionality |
+| `documentationUrl` | `string` | URL to the API documentation |
+| `endpoints` | `int` | Number of endpoints available |
+| `errorRate` | `float` | Error rate percentage of the API |
+| `healthScore` | `int` | Health score of the API (0-100) |
+| `id` | `string` | Unique identifier for the API |
+| `lastChecked` | `string` | Timestamp of last health check |
+| `name` | `string` | Name of the API |
+| `reliability` | `float` | Reliability percentage of the API |
+| `tags` | `array` | Tags associated with the API |
 
 #### Example: Load
 

@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "PublicApisDatabase",
+			"slug": "public-apis-database",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -33,66 +36,81 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "avgResponseTime",
+						"short": "Average response time in milliseconds",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "baseUrl",
+						"short": "Base URL of the API",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "category",
+						"short": "Category of the API",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "cors",
+						"short": "Whether CORS is enabled",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "dateAdded",
+						"short": "Timestamp when API was added to the database",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "description",
 						"req": true,
+						"short": "Description of the API functionality",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "documentationUrl",
 						"req": true,
+						"short": "URL to the API documentation",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "endpoints",
+						"short": "Number of endpoints available",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "errorRate",
+						"short": "Error rate percentage of the API",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "healthScore",
+						"short": "Health score of the API (0-100)",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "id",
 						"req": true,
+						"short": "Unique identifier for the API",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "lastChecked",
+						"short": "Timestamp of last health check",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
 						"req": true,
+						"short": "Name of the API",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "reliability",
+						"short": "Reliability percentage of the API",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "tags",
+						"short": "Tags associated with the API",
 						"type": "`$ARRAY`",
 					},
 				},

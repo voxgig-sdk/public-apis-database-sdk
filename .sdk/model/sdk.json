@@ -36,90 +36,105 @@
               "active": true,
               "name": "avgResponseTime",
               "req": false,
+              "short": "Average response time in milliseconds",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "baseUrl",
               "req": false,
+              "short": "Base URL of the API",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "category",
               "req": false,
+              "short": "Category of the API",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "cors",
               "req": false,
+              "short": "Whether CORS is enabled",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "dateAdded",
               "req": false,
+              "short": "Timestamp when API was added to the database",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "description",
               "req": true,
+              "short": "Description of the API functionality",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "documentationUrl",
               "req": true,
+              "short": "URL to the API documentation",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "endpoints",
               "req": false,
+              "short": "Number of endpoints available",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "errorRate",
               "req": false,
+              "short": "Error rate percentage of the API",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "healthScore",
               "req": false,
+              "short": "Health score of the API (0-100)",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "id",
               "req": true,
+              "short": "Unique identifier for the API",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "lastChecked",
               "req": false,
+              "short": "Timestamp of last health check",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": true,
+              "short": "Name of the API",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "reliability",
               "req": false,
+              "short": "Reliability percentage of the API",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "tags",
               "req": false,
+              "short": "Tags associated with the API",
               "type": "`$ARRAY`"
             }
           ],

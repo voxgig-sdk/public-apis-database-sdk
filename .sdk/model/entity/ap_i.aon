@@ -8,76 +8,91 @@ main: kit: entity: ap_i: {
     {
       name: "avgResponseTime"
       req: false
+      short: "Average response time in milliseconds"
       type: "`$INTEGER`"
     }
     {
       name: "baseUrl"
       req: false
+      short: "Base URL of the API"
       type: "`$STRING`"
     }
     {
       name: "category"
       req: false
+      short: "Category of the API"
       type: "`$STRING`"
     }
     {
       name: "cors"
       req: false
+      short: "Whether CORS is enabled"
       type: "`$BOOLEAN`"
     }
     {
       name: "dateAdded"
       req: false
+      short: "Timestamp when API was added to the database"
       type: "`$STRING`"
     }
     {
       name: "description"
       req: true
+      short: "Description of the API functionality"
       type: "`$STRING`"
     }
     {
       name: "documentationUrl"
       req: true
+      short: "URL to the API documentation"
       type: "`$STRING`"
     }
     {
       name: "endpoints"
       req: false
+      short: "Number of endpoints available"
       type: "`$INTEGER`"
     }
     {
       name: "errorRate"
       req: false
+      short: "Error rate percentage of the API"
       type: "`$NUMBER`"
     }
     {
       name: "healthScore"
       req: false
+      short: "Health score of the API (0-100)"
       type: "`$INTEGER`"
     }
     {
       name: "id"
       req: true
+      short: "Unique identifier for the API"
       type: "`$STRING`"
     }
     {
       name: "lastChecked"
       req: false
+      short: "Timestamp of last health check"
       type: "`$STRING`"
     }
     {
       name: "name"
       req: true
+      short: "Name of the API"
       type: "`$STRING`"
     }
     {
       name: "reliability"
       req: false
+      short: "Reliability percentage of the API"
       type: "`$NUMBER`"
     }
     {
       name: "tags"
       req: false
+      short: "Tags associated with the API"
       type: "`$ARRAY`"
     }
   ]
