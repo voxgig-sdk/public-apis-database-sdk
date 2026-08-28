@@ -59,18 +59,6 @@ class ApILoadMatch(ApILoadMatchRequired, total=False):
 
 
 class ApIListMatch(TypedDict, total=False):
-    avgResponseTime: int
-    baseUrl: str
     category: str
-    cors: bool
-    dateAdded: str
-    description: str
-    documentationUrl: str
-    endpoints: int
-    errorRate: float
-    healthScore: int
-    id: str
-    lastChecked: str
-    name: str
-    reliability: float
-    tags: list
+    limit: int
+    offset: int

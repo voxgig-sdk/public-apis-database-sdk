@@ -55,20 +55,8 @@ class ApILoadMatch
 /** Request payload for ApI#list. */
 class ApIListMatch
 {
-    public ?int $avgResponseTime = null;
-    public ?string $baseUrl = null;
     public ?string $category = null;
-    public ?bool $cors = null;
-    public ?string $dateAdded = null;
-    public ?string $description = null;
-    public ?string $documentationUrl = null;
-    public ?int $endpoints = null;
-    public ?float $errorRate = null;
-    public ?int $healthScore = null;
-    public ?string $id = null;
-    public ?string $lastChecked = null;
-    public ?string $name = null;
-    public ?float $reliability = null;
-    public ?array $tags = null;
+    public ?int $limit = null;
+    public ?int $offset = null;
 }
 
