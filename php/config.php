@@ -63,6 +63,7 @@ class PublicApisDatabaseConfig
               'type' => '`$INTEGER`',
             ],
             [
+              'format' => 'uri',
               'name' => 'baseUrl',
               'short' => 'Base URL of the API',
               'type' => '`$STRING`',
@@ -78,6 +79,7 @@ class PublicApisDatabaseConfig
               'type' => '`$BOOLEAN`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'dateAdded',
               'short' => 'Timestamp when API was added to the database',
               'type' => '`$STRING`',
@@ -89,6 +91,7 @@ class PublicApisDatabaseConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'documentationUrl',
               'req' => true,
               'short' => 'URL to the API documentation',
@@ -100,6 +103,7 @@ class PublicApisDatabaseConfig
               'type' => '`$INTEGER`',
             ],
             [
+              'format' => 'float',
               'name' => 'errorRate',
               'short' => 'Error rate percentage of the API',
               'type' => '`$NUMBER`',
@@ -116,6 +120,7 @@ class PublicApisDatabaseConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'lastChecked',
               'short' => 'Timestamp of last health check',
               'type' => '`$STRING`',
@@ -127,6 +132,7 @@ class PublicApisDatabaseConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'float',
               'name' => 'reliability',
               'short' => 'Reliability percentage of the API',
               'type' => '`$NUMBER`',
@@ -136,6 +142,10 @@ class PublicApisDatabaseConfig
               'short' => 'Tags associated with the API',
               'type' => '`$ARRAY`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'ap_i',
           'op' => [
@@ -171,9 +181,13 @@ class PublicApisDatabaseConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/list',
-                  'parts' => [
-                    'api',
-                    'list',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'list',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -185,6 +199,10 @@ class PublicApisDatabaseConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.apis`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'list',
                   ],
                 ],
               ],
@@ -198,13 +216,18 @@ class PublicApisDatabaseConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/new',
-                  'parts' => [
-                    'new',
+                  'segments' => [
+                    [
+                      'lit' => 'new',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'new',
                   ],
                 ],
               ],

@@ -12,6 +12,7 @@ main: kit: entity: ap_i: {
       type: "`$INTEGER`"
     }
     {
+      format: "uri"
       name: "baseUrl"
       req: false
       short: "Base URL of the API"
@@ -30,6 +31,7 @@ main: kit: entity: ap_i: {
       type: "`$BOOLEAN`"
     }
     {
+      format: "date-time"
       name: "dateAdded"
       req: false
       short: "Timestamp when API was added to the database"
@@ -42,6 +44,7 @@ main: kit: entity: ap_i: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "documentationUrl"
       req: true
       short: "URL to the API documentation"
@@ -54,6 +57,7 @@ main: kit: entity: ap_i: {
       type: "`$INTEGER`"
     }
     {
+      format: "float"
       name: "errorRate"
       req: false
       short: "Error rate percentage of the API"
@@ -72,6 +76,7 @@ main: kit: entity: ap_i: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "lastChecked"
       req: false
       short: "Timestamp of last health check"
@@ -84,6 +89,7 @@ main: kit: entity: ap_i: {
       type: "`$STRING`"
     }
     {
+      format: "float"
       name: "reliability"
       req: false
       short: "Reliability percentage of the API"
@@ -137,9 +143,13 @@ main: kit: entity: ap_i: {
           }
           method: "GET"
           orig: "/api/list"
-          parts: [
-            "api"
-            "list"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "list"
+            }
           ]
           select: {
             exist: [
@@ -161,8 +171,10 @@ main: kit: entity: ap_i: {
         {
           method: "GET"
           orig: "/new"
-          parts: [
-            "new"
+          segments: [
+            {
+              lit: "new"
+            }
           ]
           transform: {
             req: "`reqdata`"

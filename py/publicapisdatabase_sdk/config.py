@@ -1,6 +1,14 @@
 # PublicApisDatabase SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -58,6 +66,7 @@ def make_config():
             "type": "`$INTEGER`",
           },
           {
+            "format": "uri",
             "name": "baseUrl",
             "short": "Base URL of the API",
             "type": "`$STRING`",
@@ -73,6 +82,7 @@ def make_config():
             "type": "`$BOOLEAN`",
           },
           {
+            "format": "date-time",
             "name": "dateAdded",
             "short": "Timestamp when API was added to the database",
             "type": "`$STRING`",
@@ -84,6 +94,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "documentationUrl",
             "req": True,
             "short": "URL to the API documentation",
@@ -95,6 +106,7 @@ def make_config():
             "type": "`$INTEGER`",
           },
           {
+            "format": "float",
             "name": "errorRate",
             "short": "Error rate percentage of the API",
             "type": "`$NUMBER`",
@@ -111,6 +123,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "lastChecked",
             "short": "Timestamp of last health check",
             "type": "`$STRING`",
@@ -122,6 +135,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "float",
             "name": "reliability",
             "short": "Reliability percentage of the API",
             "type": "`$NUMBER`",
@@ -132,6 +146,10 @@ def make_config():
             "type": "`$ARRAY`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "ap_i",
         "op": {
           "list": {
@@ -166,9 +184,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/list",
-                "parts": [
-                  "api",
-                  "list",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "list",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -181,6 +203,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.apis`",
                 },
+                "parts": [
+                  "api",
+                  "list",
+                ],
               },
             ],
           },
@@ -193,14 +219,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/new",
-                "parts": [
-                  "new",
+                "segments": [
+                  {
+                    "lit": "new",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "new",
+                ],
               },
             ],
           },

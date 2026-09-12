@@ -37,6 +37,7 @@ local function make_config()
             ["type"] = "`$INTEGER`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "baseUrl",
             ["short"] = "Base URL of the API",
             ["type"] = "`$STRING`",
@@ -52,6 +53,7 @@ local function make_config()
             ["type"] = "`$BOOLEAN`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "dateAdded",
             ["short"] = "Timestamp when API was added to the database",
             ["type"] = "`$STRING`",
@@ -63,6 +65,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "documentationUrl",
             ["req"] = true,
             ["short"] = "URL to the API documentation",
@@ -74,6 +77,7 @@ local function make_config()
             ["type"] = "`$INTEGER`",
           },
           {
+            ["format"] = "float",
             ["name"] = "errorRate",
             ["short"] = "Error rate percentage of the API",
             ["type"] = "`$NUMBER`",
@@ -90,6 +94,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "lastChecked",
             ["short"] = "Timestamp of last health check",
             ["type"] = "`$STRING`",
@@ -101,6 +106,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "float",
             ["name"] = "reliability",
             ["short"] = "Reliability percentage of the API",
             ["type"] = "`$NUMBER`",
@@ -110,6 +116,10 @@ local function make_config()
             ["short"] = "Tags associated with the API",
             ["type"] = "`$ARRAY`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "ap_i",
         ["op"] = {
@@ -145,9 +155,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/list",
-                ["parts"] = {
-                  "api",
-                  "list",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "list",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -159,6 +173,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.apis`",
+                },
+                ["parts"] = {
+                  "api",
+                  "list",
                 },
               },
             },
@@ -172,13 +190,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/new",
-                ["parts"] = {
-                  "new",
+                ["segments"] = {
+                  {
+                    ["lit"] = "new",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "new",
                 },
               },
             },

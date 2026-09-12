@@ -49,6 +49,7 @@ module PublicApisDatabaseConfig
               "type" => "`$INTEGER`",
             },
             {
+              "format" => "uri",
               "name" => "baseUrl",
               "short" => "Base URL of the API",
               "type" => "`$STRING`",
@@ -64,6 +65,7 @@ module PublicApisDatabaseConfig
               "type" => "`$BOOLEAN`",
             },
             {
+              "format" => "date-time",
               "name" => "dateAdded",
               "short" => "Timestamp when API was added to the database",
               "type" => "`$STRING`",
@@ -75,6 +77,7 @@ module PublicApisDatabaseConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "documentationUrl",
               "req" => true,
               "short" => "URL to the API documentation",
@@ -86,6 +89,7 @@ module PublicApisDatabaseConfig
               "type" => "`$INTEGER`",
             },
             {
+              "format" => "float",
               "name" => "errorRate",
               "short" => "Error rate percentage of the API",
               "type" => "`$NUMBER`",
@@ -102,6 +106,7 @@ module PublicApisDatabaseConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "lastChecked",
               "short" => "Timestamp of last health check",
               "type" => "`$STRING`",
@@ -113,6 +118,7 @@ module PublicApisDatabaseConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "float",
               "name" => "reliability",
               "short" => "Reliability percentage of the API",
               "type" => "`$NUMBER`",
@@ -123,6 +129,10 @@ module PublicApisDatabaseConfig
               "type" => "`$ARRAY`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "ap_i",
           "op" => {
             "list" => {
@@ -157,9 +167,13 @@ module PublicApisDatabaseConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/list",
-                  "parts" => [
-                    "api",
-                    "list",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "list",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -172,6 +186,10 @@ module PublicApisDatabaseConfig
                     "req" => "`reqdata`",
                     "res" => "`body.apis`",
                   },
+                  "parts" => [
+                    "api",
+                    "list",
+                  ],
                 },
               ],
             },
@@ -184,14 +202,19 @@ module PublicApisDatabaseConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/new",
-                  "parts" => [
-                    "new",
+                  "segments" => [
+                    {
+                      "lit" => "new",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "new",
+                  ],
                 },
               ],
             },
