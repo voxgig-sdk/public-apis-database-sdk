@@ -105,7 +105,7 @@ local results, err = client:ApI():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/public-apis-database` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-apis-database-sdk/releases) |
+| TypeScript | `@voxgig-sdk/public-apis-database-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-apis-database-sdk/releases) |
 | Python | `voxgig-sdk-public-apis-database` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-apis-database-sdk/releases) |
 | PHP | `voxgig-sdk/public-apis-database` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-apis-database-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/public-apis-database-sdk/go` | `go get github.com/voxgig-sdk/public-apis-database-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:ApI():list()
 ### TypeScript
 
 ```ts
-import { PublicApisDatabaseSDK } from '@voxgig-sdk/public-apis-database'
+import { PublicApisDatabaseSDK } from '@voxgig-sdk/public-apis-database-sdk'
 
 const client = new PublicApisDatabaseSDK()
 
