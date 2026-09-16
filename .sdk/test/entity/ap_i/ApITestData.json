@@ -2,16 +2,16 @@
   "existing": {
     "ap_i": {
       "AP_I00": {
-        "avgResponseTime": "s96",
+        "avgResponseTime": 150,
         "baseUrl": "s97",
         "category": "s98",
         "cors": false,
         "dateAdded": "s9a",
         "description": "s9b",
         "documentationUrl": "s9c",
-        "endpoints": "s9d",
+        "endpoints": 157,
         "errorRate": 158,
-        "healthScore": "s9f",
+        "healthScore": 159,
         "id": "AP_I00",
         "lastChecked": "sa1",
         "name": "sa2",
@@ -19,16 +19,16 @@
         "tags": []
       },
       "AP_I01": {
-        "avgResponseTime": "s12c",
+        "avgResponseTime": 300,
         "baseUrl": "s12d",
         "category": "s12e",
         "cors": false,
         "dateAdded": "s130",
         "description": "s131",
         "documentationUrl": "s132",
-        "endpoints": "s133",
+        "endpoints": 307,
         "errorRate": 308,
-        "healthScore": "s135",
+        "healthScore": 309,
         "id": "AP_I01",
         "lastChecked": "s137",
         "name": "s138",
@@ -36,16 +36,16 @@
         "tags": []
       },
       "AP_I02": {
-        "avgResponseTime": "s1c2",
+        "avgResponseTime": 450,
         "baseUrl": "s1c3",
         "category": "s1c4",
         "cors": false,
         "dateAdded": "s1c6",
         "description": "s1c7",
         "documentationUrl": "s1c8",
-        "endpoints": "s1c9",
+        "endpoints": 457,
         "errorRate": 458,
-        "healthScore": "s1cb",
+        "healthScore": 459,
         "id": "AP_I02",
         "lastChecked": "s1cd",
         "name": "s1ce",
@@ -57,20 +57,275 @@
   "new": {
     "ap_i": {
       "ap_i_ref01": {
-        "avgResponseTime": "s258",
+        "avgResponseTime": 600,
         "baseUrl": "s259",
         "category": "s25a",
         "cors": false,
         "dateAdded": "s25c",
         "description": "s25d",
         "documentationUrl": "s25e",
-        "endpoints": "s25f",
+        "endpoints": 607,
         "errorRate": 608,
-        "healthScore": "s261",
+        "healthScore": 609,
         "lastChecked": "s263",
         "name": "s264",
         "reliability": 613,
         "tags": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/list": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "listApis",
+        "parameters": [
+          {
+            "description": "Filter APIs by category",
+            "in": "query",
+            "name": "category",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Number of APIs to return",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Offset for pagination",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "apis": {
+                      "items": {
+                        "properties": {
+                          "avgResponseTime": {
+                            "description": "Average response time in milliseconds",
+                            "type": "integer"
+                          },
+                          "baseUrl": {
+                            "description": "Base URL of the API",
+                            "format": "uri",
+                            "type": "string"
+                          },
+                          "category": {
+                            "description": "Category of the API",
+                            "type": "string"
+                          },
+                          "cors": {
+                            "description": "Whether CORS is enabled",
+                            "type": "boolean"
+                          },
+                          "dateAdded": {
+                            "description": "Timestamp when API was added to the database",
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          "description": {
+                            "description": "Description of the API functionality",
+                            "type": "string"
+                          },
+                          "documentationUrl": {
+                            "description": "URL to the API documentation",
+                            "format": "uri",
+                            "type": "string"
+                          },
+                          "endpoints": {
+                            "description": "Number of endpoints available",
+                            "type": "integer"
+                          },
+                          "errorRate": {
+                            "description": "Error rate percentage of the API",
+                            "format": "float",
+                            "maximum": 100,
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          "healthScore": {
+                            "description": "Health score of the API (0-100)",
+                            "maximum": 100,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "id": {
+                            "description": "Unique identifier for the API",
+                            "type": "string"
+                          },
+                          "lastChecked": {
+                            "description": "Timestamp of last health check",
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "Name of the API",
+                            "type": "string"
+                          },
+                          "reliability": {
+                            "description": "Reliability percentage of the API",
+                            "format": "float",
+                            "maximum": 100,
+                            "minimum": 0,
+                            "type": "number"
+                          },
+                          "tags": {
+                            "description": "Tags associated with the API",
+                            "items": {
+                              "type": "string"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "description",
+                          "documentationUrl"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "count": {
+                      "description": "Total number of APIs",
+                      "example": 624,
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successfully retrieved list of public APIs"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "code": {
+                      "description": "Error code",
+                      "type": "string"
+                    },
+                    "details": {
+                      "description": "Additional error details",
+                      "type": "string"
+                    },
+                    "error": {
+                      "description": "Error message",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request - invalid parameters"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "code": {
+                      "description": "Error code",
+                      "type": "string"
+                    },
+                    "details": {
+                      "description": "Additional error details",
+                      "type": "string"
+                    },
+                    "error": {
+                      "description": "Error message",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /new": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getNewApiForm",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "text/html": {
+                "schema": {
+                  "description": "HTML page containing the API submission form",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successfully retrieved the API submission form"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "code": {
+                      "description": "Error code",
+                      "type": "string"
+                    },
+                    "details": {
+                      "description": "Additional error details",
+                      "type": "string"
+                    },
+                    "error": {
+                      "description": "Error message",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

@@ -1,12 +1,18 @@
 # PublicApisDatabase SDK feature factory
 
 from publicapisdatabase_sdk.feature.base_feature import PublicApisDatabaseBaseFeature
+from publicapisdatabase_sdk.feature.ratelimit_feature import PublicApisDatabaseRatelimitFeature
+from publicapisdatabase_sdk.feature.retry_feature import PublicApisDatabaseRetryFeature
 from publicapisdatabase_sdk.feature.test_feature import PublicApisDatabaseTestFeature
+from publicapisdatabase_sdk.feature.timeout_feature import PublicApisDatabaseTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: PublicApisDatabaseBaseFeature(),
+    "ratelimit": lambda: PublicApisDatabaseRatelimitFeature(),
+    "retry": lambda: PublicApisDatabaseRetryFeature(),
     "test": lambda: PublicApisDatabaseTestFeature(),
+    "timeout": lambda: PublicApisDatabaseTimeoutFeature(),
 }
 
 
