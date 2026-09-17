@@ -105,12 +105,12 @@ local results, err = client:ApI():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/public-apis-database-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-apis-database-sdk/releases) |
-| Python | `voxgig-sdk-public-apis-database` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-apis-database-sdk/releases) |
-| PHP | `voxgig-sdk/public-apis-database` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-apis-database-sdk/releases) |
+| TypeScript | `@voxgig-sdk/public-apis-database-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-apis-database-sdk/tags) |
+| Python | `voxgig-sdk-public-apis-database` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-apis-database-sdk/tags) |
+| PHP | `voxgig-sdk/public-apis-database` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-apis-database-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/public-apis-database-sdk/go` | `go get github.com/voxgig-sdk/public-apis-database-sdk/go@latest` |
-| Ruby | `voxgig-sdk-public-apis-database` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-apis-database-sdk/releases) |
-| Lua | `voxgig-sdk-public-apis-database` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-apis-database-sdk/releases) |
+| Ruby | `voxgig-sdk-public-apis-database` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-apis-database-sdk/tags) |
+| Lua | `voxgig-sdk-public-apis-database` | publish pending — [install from git tag](https://github.com/voxgig-sdk/public-apis-database-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/public-apis-database-sdk/go-cli` | `go install github.com/voxgig-sdk/public-apis-database-sdk/go-cli/cmd/public-apis-database@latest` |
 | Go MCP server | `github.com/voxgig-sdk/public-apis-database-sdk/go-mcp` | `go get github.com/voxgig-sdk/public-apis-database-sdk/go-mcp@latest` |
 
