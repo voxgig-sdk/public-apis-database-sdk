@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "api": {
+      "API00": {
+        "id": "API00"
+      },
+      "API01": {
+        "id": "API01"
+      },
+      "API02": {
+        "id": "API02"
+      }
+    }
+  },
+  "new": {
+    "api": {
+      "api_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/list": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /new": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

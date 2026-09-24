@@ -41,9 +41,9 @@ $client = PublicApisDatabaseSDK::test();
 
 ### Instance Methods
 
-#### `ApI($data = null)`
+#### `Api($data = null)`
 
-Create a new `ApIEntity` instance. Pass `null` for no initial data.
+Create a new `ApiEntity` instance. Pass `null` for no initial data.
 
 #### `options_map(): array`
 
@@ -82,31 +82,11 @@ Prepare a fetch definition without sending the request. Returns the
 
 ---
 
-## ApIEntity
+## ApiEntity
 
 ```php
-$ap_i = $client->ApI();
+$api = $client->Api();
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `avgResponseTime` | `int` | No | Average response time in milliseconds |
-| `baseUrl` | `string` | No | Base URL of the API |
-| `category` | `string` | No | Category of the API |
-| `cors` | `bool` | No | Whether CORS is enabled |
-| `dateAdded` | `string` | No | Timestamp when API was added to the database |
-| `description` | `string` | Yes | Description of the API functionality |
-| `documentationUrl` | `string` | Yes | URL to the API documentation |
-| `endpoints` | `int` | No | Number of endpoints available |
-| `errorRate` | `float` | No | Error rate percentage of the API |
-| `healthScore` | `int` | No | Health score of the API (0-100) |
-| `id` | `string` | Yes | Unique identifier for the API |
-| `lastChecked` | `string` | No | Timestamp of last health check |
-| `name` | `string` | Yes | Name of the API |
-| `reliability` | `float` | No | Reliability percentage of the API |
-| `tags` | `array` | No | Tags associated with the API |
 
 ### Operations
 
@@ -115,7 +95,7 @@ $ap_i = $client->ApI();
 List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->ApI()->list();
+$results = $client->Api()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -123,7 +103,7 @@ $results = $client->ApI()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ApI()->load(["id" => "ap_i_id"]);
+$result = $client->Api()->load();
 ```
 
 ### Common Methods
@@ -144,9 +124,9 @@ Get the entity match criteria.
 
 Set the entity match criteria.
 
-#### `make(): ApIEntity`
+#### `make(): ApiEntity`
 
-Create a new `ApIEntity` instance with the same client and
+Create a new `ApiEntity` instance with the same client and
 options.
 
 #### `get_name(): string`

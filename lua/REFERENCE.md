@@ -40,9 +40,9 @@ local client = sdk.test()
 
 ### Instance Methods
 
-#### `ApI(data)`
+#### `Api(data)`
 
-Create a new `ApI` entity instance. Pass `nil` for no initial data.
+Create a new `Api` entity instance. Pass `nil` for no initial data.
 
 #### `options_map() -> table`
 
@@ -80,31 +80,11 @@ same parameters as `direct()`.
 
 ---
 
-## ApIEntity
+## ApiEntity
 
 ```lua
-local ap_i = client:ApI(nil)
+local api = client:Api(nil)
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `avgResponseTime` | `number` | No | Average response time in milliseconds |
-| `baseUrl` | `string` | No | Base URL of the API |
-| `category` | `string` | No | Category of the API |
-| `cors` | `boolean` | No | Whether CORS is enabled |
-| `dateAdded` | `string` | No | Timestamp when API was added to the database |
-| `description` | `string` | Yes | Description of the API functionality |
-| `documentationUrl` | `string` | Yes | URL to the API documentation |
-| `endpoints` | `number` | No | Number of endpoints available |
-| `errorRate` | `number` | No | Error rate percentage of the API |
-| `healthScore` | `number` | No | Health score of the API (0-100) |
-| `id` | `string` | Yes | Unique identifier for the API |
-| `lastChecked` | `string` | No | Timestamp of last health check |
-| `name` | `string` | Yes | Name of the API |
-| `reliability` | `number` | No | Reliability percentage of the API |
-| `tags` | `table` | No | Tags associated with the API |
 
 ### Operations
 
@@ -113,7 +93,7 @@ local ap_i = client:ApI(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:ApI():list()
+local results, err = client:Api():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -121,7 +101,7 @@ local results, err = client:ApI():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ApI():load({ id = "ap_i_id" })
+local result, err = client:Api():load()
 ```
 
 ### Common Methods
@@ -144,7 +124,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `ApIEntity` instance with the same client and
+Create a new `ApiEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`

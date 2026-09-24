@@ -41,8 +41,8 @@ func init() {
 	core.NewTimeoutFeatureFunc = func() core.Feature {
 		return feature.NewTimeoutFeature()
 	}
-	core.NewApIEntityFunc = func(client *core.PublicApisDatabaseSDK, entopts map[string]any) core.PublicApisDatabaseEntity {
-		return entity.NewApIEntity(client, entopts)
+	core.NewApiEntityFunc = func(client *core.PublicApisDatabaseSDK, entopts map[string]any) core.PublicApisDatabaseEntity {
+		return entity.NewApiEntity(client, entopts)
 	}
 }
 

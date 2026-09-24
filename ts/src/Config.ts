@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -127,7 +120,7 @@ class Config {
 
     entity: {
       
-        ap_i: {
+        api: {
         },
   
     }
@@ -135,129 +128,15 @@ class Config {
 
 
   entity = {
-    "ap_i": {
-      "fields": [
-        {
-          "name": "avgResponseTime",
-          "short": "Average response time in milliseconds",
-          "type": "`$INTEGER`"
-        },
-        {
-          "format": "uri",
-          "name": "baseUrl",
-          "short": "Base URL of the API",
-          "type": "`$STRING`"
-        },
-        {
-          "name": "category",
-          "short": "Category of the API",
-          "type": "`$STRING`"
-        },
-        {
-          "name": "cors",
-          "short": "Whether CORS is enabled",
-          "type": "`$BOOLEAN`"
-        },
-        {
-          "format": "date-time",
-          "name": "dateAdded",
-          "short": "Timestamp when API was added to the database",
-          "type": "`$STRING`"
-        },
-        {
-          "name": "description",
-          "req": true,
-          "short": "Description of the API functionality",
-          "type": "`$STRING`"
-        },
-        {
-          "format": "uri",
-          "name": "documentationUrl",
-          "req": true,
-          "short": "URL to the API documentation",
-          "type": "`$STRING`"
-        },
-        {
-          "name": "endpoints",
-          "short": "Number of endpoints available",
-          "type": "`$INTEGER`"
-        },
-        {
-          "format": "float",
-          "name": "errorRate",
-          "short": "Error rate percentage of the API",
-          "type": "`$NUMBER`"
-        },
-        {
-          "name": "healthScore",
-          "short": "Health score of the API (0-100)",
-          "type": "`$INTEGER`"
-        },
-        {
-          "name": "id",
-          "req": true,
-          "short": "Unique identifier for the API",
-          "type": "`$STRING`"
-        },
-        {
-          "format": "date-time",
-          "name": "lastChecked",
-          "short": "Timestamp of last health check",
-          "type": "`$STRING`"
-        },
-        {
-          "name": "name",
-          "req": true,
-          "short": "Name of the API",
-          "type": "`$STRING`"
-        },
-        {
-          "format": "float",
-          "name": "reliability",
-          "short": "Reliability percentage of the API",
-          "type": "`$NUMBER`"
-        },
-        {
-          "name": "tags",
-          "short": "Tags associated with the API",
-          "type": "`$ARRAY`"
-        }
-      ],
-      "id": {
-        "field": "id",
-        "name": "id"
-      },
-      "name": "ap_i",
+    "api": {
+      "fields": [],
+      "name": "api",
       "op": {
         "list": {
           "input": "data",
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "category",
-                    "orig": "category",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 50,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": 0,
-                    "kind": "query",
-                    "name": "offset",
-                    "orig": "offset",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/list",
@@ -269,21 +148,47 @@ class Config {
                   "lit": "list"
                 }
               ],
+              "parts": [
+                "api",
+                "list"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body.apis`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "category",
+                    "orig": "category",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 50
+                  },
+                  {
+                    "name": "offset",
+                    "orig": "offset",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 0
+                  }
+                ]
+              },
               "select": {
+                "$action": "list",
                 "exist": [
                   "category",
                   "limit",
                   "offset"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body.apis`"
-              },
-              "parts": [
-                "api",
-                "list"
-              ]
+              }
             }
           ]
         },
@@ -292,7 +197,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/new",
@@ -301,14 +205,16 @@ class Config {
                   "lit": "new"
                 }
               ],
-              "select": {},
+              "parts": [
+                "new"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "new"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         }

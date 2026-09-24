@@ -24,177 +24,135 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
-        "ap_i": {
+        "api": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "avgResponseTime",
-              "req": false,
-              "short": "Average response time in milliseconds",
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "baseUrl",
-              "req": false,
-              "short": "Base URL of the API",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "category",
-              "req": false,
-              "short": "Category of the API",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "cors",
-              "req": false,
-              "short": "Whether CORS is enabled",
-              "type": "`$BOOLEAN`"
-            },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "dateAdded",
-              "req": false,
-              "short": "Timestamp when API was added to the database",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "description",
-              "req": true,
-              "short": "Description of the API functionality",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "documentationUrl",
-              "req": true,
-              "short": "URL to the API documentation",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "endpoints",
-              "req": false,
-              "short": "Number of endpoints available",
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "format": "float",
-              "name": "errorRate",
-              "req": false,
-              "short": "Error rate percentage of the API",
-              "type": "`$NUMBER`"
-            },
-            {
-              "active": true,
-              "name": "healthScore",
-              "req": false,
-              "short": "Health score of the API (0-100)",
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "id",
-              "req": true,
-              "short": "Unique identifier for the API",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "lastChecked",
-              "req": false,
-              "short": "Timestamp of last health check",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "name",
-              "req": true,
-              "short": "Name of the API",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "format": "float",
-              "name": "reliability",
-              "req": false,
-              "short": "Reliability percentage of the API",
-              "type": "`$NUMBER`"
-            },
-            {
-              "active": true,
-              "name": "tags",
-              "req": false,
-              "short": "Tags associated with the API",
-              "type": "`$ARRAY`"
-            }
-          ],
-          "id": {
-            "field": "id",
-            "name": "id"
-          },
-          "name": "ap_i",
+          "fields": {},
+          "name": "api",
           "op": {
             "list": {
               "input": "data",
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/list",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "category",
-                        "orig": "category",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "category",
+                        "or": "category",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 50,
-                        "kind": "query",
-                        "name": "limit",
-                        "orig": "limit",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 50,
+                        "k": "query",
+                        "n": "limit",
+                        "or": "limit",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": 0,
-                        "kind": "query",
-                        "name": "offset",
-                        "orig": "offset",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 0,
+                        "k": "query",
+                        "n": "offset",
+                        "or": "offset",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/list",
-                    "json": "{\"operationId\":\"listApis\",\"parameters\":[{\"description\":\"Filter APIs by category\",\"in\":\"query\",\"name\":\"category\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Number of APIs to return\",\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"default\":50,\"maximum\":100,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Offset for pagination\",\"in\":\"query\",\"name\":\"offset\",\"required\":false,\"schema\":{\"default\":0,\"minimum\":0,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"apis\":{\"items\":{\"properties\":{\"avgResponseTime\":{\"description\":\"Average response time in milliseconds\",\"type\":\"integer\"},\"baseUrl\":{\"description\":\"Base URL of the API\",\"format\":\"uri\",\"type\":\"string\"},\"category\":{\"description\":\"Category of the API\",\"type\":\"string\"},\"cors\":{\"description\":\"Whether CORS is enabled\",\"type\":\"boolean\"},\"dateAdded\":{\"description\":\"Timestamp when API was added to the database\",\"format\":\"date-time\",\"type\":\"string\"},\"description\":{\"description\":\"Description of the API functionality\",\"type\":\"string\"},\"documentationUrl\":{\"description\":\"URL to the API documentation\",\"format\":\"uri\",\"type\":\"string\"},\"endpoints\":{\"description\":\"Number of endpoints available\",\"type\":\"integer\"},\"errorRate\":{\"description\":\"Error rate percentage of the API\",\"format\":\"float\",\"maximum\":100,\"minimum\":0,\"type\":\"number\"},\"healthScore\":{\"description\":\"Health score of the API (0-100)\",\"maximum\":100,\"minimum\":0,\"type\":\"integer\"},\"id\":{\"description\":\"Unique identifier for the API\",\"type\":\"string\"},\"lastChecked\":{\"description\":\"Timestamp of last health check\",\"format\":\"date-time\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the API\",\"type\":\"string\"},\"reliability\":{\"description\":\"Reliability percentage of the API\",\"format\":\"float\",\"maximum\":100,\"minimum\":0,\"type\":\"number\"},\"tags\":{\"description\":\"Tags associated with the API\",\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"required\":[\"id\",\"name\",\"description\",\"documentationUrl\"],\"type\":\"object\"},\"type\":\"array\"},\"count\":{\"description\":\"Total number of APIs\",\"example\":624,\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successfully retrieved list of public APIs\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"description\":\"Error code\",\"type\":\"string\"},\"details\":{\"description\":\"Additional error details\",\"type\":\"string\"},\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"required\":[\"error\"],\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"description\":\"Error code\",\"type\":\"string\"},\"details\":{\"description\":\"Additional error details\",\"type\":\"string\"},\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"required\":[\"error\"],\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/list",
+                  "q": {
+                    "$action": "list",
+                    "exist": [
+                      "category",
+                      "limit",
+                      "offset"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/list",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -202,14 +160,7 @@
                       "lit": "list"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "category",
-                      "limit",
-                      "offset"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.apis`"
                   }
@@ -221,24 +172,24 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /new",
-                    "json": "{\"operationId\":\"getNewApiForm\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"text/html\":{\"schema\":{\"description\":\"HTML page containing the API submission form\",\"type\":\"string\"}}},\"description\":\"Successfully retrieved the API submission form\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"code\":{\"description\":\"Error code\",\"type\":\"string\"},\"details\":{\"description\":\"Additional error details\",\"type\":\"string\"},\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"required\":[\"error\"],\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/new",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/new",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "new"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -658,46 +609,46 @@
         }
       },
       "flow": {
-        "BasicApIFlow": {
+        "BasicApiFlow": {
           "active": true,
-          "entity": "ap_i",
-          "key$": "BasicApIFlow",
+          "entity": "api",
+          "key$": "BasicApiFlow",
           "kind": "basic",
-          "name": "BasicApIFlow",
+          "name": "BasicApiFlow",
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
-                    "ref": "ap_i_ref01"
+                    "ref": "api_ref01"
                   }
                 }
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "ap_i_ref01",
-                "srcdatavar": "ap_i_ref01_data",
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "api_ref01",
+                "srcdatavar": "api_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
-                    "mark": "Mark01-ap_i_ref01"
+                    "mark": "Mark01-api_ref01"
                   }
                 }
               ]

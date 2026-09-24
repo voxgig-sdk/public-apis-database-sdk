@@ -19,16 +19,16 @@ make build
 export PUBLIC_APIS_DATABASE_APIKEY=sk_live_xxx
 
 # 4. Each command line is ONE boru expression, run against the API:
-./public-apis-database-cli list ap_i
-./public-apis-database-cli load 1 ap_i            # {id:1} shorthand
-./public-apis-database-cli load '{id:1}' ap_i       # explicit match map
+./public-apis-database-cli list api
+./public-apis-database-cli load 1 api            # {id:1} shorthand
+./public-apis-database-cli load '{id:1}' api       # explicit match map
 
 # 5. Override the API base URL for a single call
-PUBLIC_APIS_DATABASE_BASE=https://api.example.com ./public-apis-database-cli list ap_i
+PUBLIC_APIS_DATABASE_BASE=https://api.example.com ./public-apis-database-cli list api
 
 # 6. No arguments -> interactive REPL
 ./public-apis-database-cli
-public-apis-database> list ap_i
+public-apis-database> list api
 public-apis-database> /quit
 ```
 
@@ -54,7 +54,7 @@ public-apis-database> /quit
    arguments to open the REPL):
 
    ```sh
-   ./dist/*/public-apis-database-cli list ap_i
+   ./dist/*/public-apis-database-cli list api
    ```
 
 4. **Go interactive.** Run the binary with no arguments to open the REPL, then
@@ -67,7 +67,7 @@ That is the whole loop: *build → set key → evaluate boru expressions*.
 ### List the records of an entity
 
 ```sh
-./public-apis-database-cli list ap_i
+./public-apis-database-cli list api
 ```
 
 `list <entity>` returns the first page of records. `<entity>` is a bareword —
@@ -76,8 +76,8 @@ it is auto-quoted as an boru atom, so no quotes are needed.
 ### Load a single record
 
 ```sh
-./public-apis-database-cli load 1 ap_i          # scalar shorthand for {id:1}
-./public-apis-database-cli load '{id:1}' ap_i     # explicit match map
+./public-apis-database-cli load 1 api          # scalar shorthand for {id:1}
+./public-apis-database-cli load '{id:1}' api     # explicit match map
 ```
 
 The query is either a **scalar** (`1`, treated as `{id:1}`) or a **match map**
@@ -90,7 +90,7 @@ Configuration is read from the environment — nothing is written to disk:
 ```sh
 export PUBLIC_APIS_DATABASE_APIKEY=sk_live_xxx            # API key
 export PUBLIC_APIS_DATABASE_BASE=https://api.example.com  # optional: override the API base URL
-./public-apis-database-cli list ap_i
+./public-apis-database-cli list api
 ```
 
 Both are injectable by a secrets vault, so the key never has to be typed inline.
@@ -102,7 +102,7 @@ evaluated as its own boru expression:
 
 ```text
 $ ./public-apis-database-cli
-public-apis-database> list ap_i
+public-apis-database> list api
 public-apis-database> /help
 public-apis-database> /quit
 ```
@@ -130,7 +130,7 @@ The CLI registers these boru words, each bound to the SDK:
 | `list`   | `list <entity>` · `list <query> <entity>`     | First page of records          |
 | `load`   | `load <entity>` · `load <query> <entity>`     | A single record                |
 
-- `<entity>` is a bareword, auto-quoted as an boru atom (e.g. `ap_i`).
+- `<entity>` is a bareword, auto-quoted as an boru atom (e.g. `api`).
 - `<query>` is either a **Map** (`{id:1}`) or a **Scalar** (`1`, treated as
   `{id:1}`). A scalar is always wrapped as `{id:<value>}`.
 
@@ -173,7 +173,7 @@ Meta-commands use the `/` prefix (everything else on a line is evaluated as boru
 
 The 1 entity this SDK exposes (any is valid as `<entity>`):
 
-ap_i
+api
 
 ## Explanation
 

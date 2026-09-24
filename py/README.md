@@ -4,7 +4,7 @@
 
 The Python SDK for the PublicApisDatabase API — an entity-oriented client following Pythonic conventions.
 
-The SDK exposes the API as capitalised, semantic **Entities** — for example `client.ApI()` — each
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Api()` — each
 carrying a small, uniform set of operations (`list`, `load`) instead of raw URL
 paths and query strings. You work with named resources and verbs, which
 keeps the cognitive load low.
@@ -43,7 +43,7 @@ error — iterate it directly.
 
 ```python
 try:
-    apis = client.ApI().list()
+    apis = client.Api().list()
     for api in apis:
         print(api)
 except Exception as err:
@@ -56,7 +56,7 @@ except Exception as err:
 
 ```python
 try:
-    api = client.ApI().load({"id": "example_id"})
+    api = client.Api().load()
     print(api)
 except Exception as err:
     print(f"load failed: {err}")
@@ -69,7 +69,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    apis = client.ApI().list()
+    apis = client.Api().list()
     print(apis)
 except Exception as err:
     print(f"list failed: {err}")
@@ -138,7 +138,7 @@ client = PublicApisDatabaseSDK.test()
 
 # Entity ops return the ENTITY and raises on error;
 # call data_get() for the record.
-api = client.ApI().list()
+api = client.Api().list()
 # api contains the mock response record
 ```
 
@@ -215,7 +215,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `ApI` | `(data) -> ApIEntity` | Create an ApI entity instance. |
+| `Api` | `(data) -> ApiEntity` | Create an Api entity instance. |
 
 ### Entity interface
 
@@ -252,25 +252,10 @@ On error, `ok` is `False` and `err` contains the error value.
 
 ### Entities
 
-#### ApI
+#### Api
 
 | Field | Description |
 | --- | --- |
-| `avgResponseTime` | Average response time in milliseconds |
-| `baseUrl` | Base URL of the API |
-| `category` | Category of the API |
-| `cors` | Whether CORS is enabled |
-| `dateAdded` | Timestamp when API was added to the database |
-| `description` | Description of the API functionality |
-| `documentationUrl` | URL to the API documentation |
-| `endpoints` | Number of endpoints available |
-| `errorRate` | Error rate percentage of the API |
-| `healthScore` | Health score of the API (0-100) |
-| `id` | Unique identifier for the API |
-| `lastChecked` | Timestamp of last health check |
-| `name` | Name of the API |
-| `reliability` | Reliability percentage of the API |
-| `tags` | Tags associated with the API |
 
 Operations: List, Load.
 
@@ -281,9 +266,9 @@ API path: `/api/list`
 ## Entities
 
 
-### ApI
+### Api
 
-Create an instance: `ap_i = client.ApI()`
+Create an instance: `api = client.Api()`
 
 #### Operations
 
@@ -292,36 +277,16 @@ Create an instance: `ap_i = client.ApI()`
 | `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `avgResponseTime` | `int` | Average response time in milliseconds |
-| `baseUrl` | `str` | Base URL of the API |
-| `category` | `str` | Category of the API |
-| `cors` | `bool` | Whether CORS is enabled |
-| `dateAdded` | `str` | Timestamp when API was added to the database |
-| `description` | `str` | Description of the API functionality |
-| `documentationUrl` | `str` | URL to the API documentation |
-| `endpoints` | `int` | Number of endpoints available |
-| `errorRate` | `float` | Error rate percentage of the API |
-| `healthScore` | `int` | Health score of the API (0-100) |
-| `id` | `str` | Unique identifier for the API |
-| `lastChecked` | `str` | Timestamp of last health check |
-| `name` | `str` | Name of the API |
-| `reliability` | `float` | Reliability percentage of the API |
-| `tags` | `list` | Tags associated with the API |
-
 #### Example: Load
 
 ```python
-ap_i = client.ApI().load({"id": "ap_i_id"})
+api = client.Api().load()
 ```
 
 #### Example: List
 
 ```python
-ap_is = client.ApI().list()
+apis = client.Api().list()
 ```
 
 ## Features
@@ -485,7 +450,7 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-api = client.ApI()
+api = client.Api()
 api.list()
 
 # api.data_get() now returns the api data from the last list

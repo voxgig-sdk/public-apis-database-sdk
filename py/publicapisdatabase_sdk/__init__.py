@@ -307,10 +307,10 @@ class PublicApisDatabaseSDK:
         return res
 
 
-    def ApI(self, data=None) -> "ApIEntity":
-        """Entity factory: client.ApI().list() / client.ApI().load({"id": ...})."""
-        from publicapisdatabase_sdk.entity.ap_i_entity import ApIEntity
-        return ApIEntity(self, data)
+    def Api(self, data=None) -> "ApiEntity":
+        """Entity factory: client.Api().list() / client.Api().load({"id": ...})."""
+        from publicapisdatabase_sdk.entity.api_entity import ApiEntity
+        return ApiEntity(self, data)
 
 
 
@@ -340,4 +340,4 @@ class PublicApisDatabaseSDK:
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from publicapisdatabase_sdk.entity.ap_i_entity import ApIEntity
+    from publicapisdatabase_sdk.entity.api_entity import ApiEntity

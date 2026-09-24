@@ -4,7 +4,7 @@
 
 The Lua SDK for the PublicApisDatabase API — an entity-oriented client using Lua conventions.
 
-It exposes the API as capitalised, semantic **Entities** — e.g. `client:ApI()` — each with the same small set of operations (`list`, `load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+It exposes the API as capitalised, semantic **Entities** — e.g. `client:Api()` — each with the same small set of operations (`list`, `load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
@@ -39,18 +39,18 @@ Entity operations return `(value, err)`. For `list`, `value` is the
 array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local apis, err = client:ApI():list()
+local apis, err = client:Api():list()
 if err then error(err) end
 
 for _, item in ipairs(apis) do
-  print(item["id"], item["baseUrl"])
+  print(item)
 end
 ```
 
 ### 3. Load an api
 
 ```lua
-local api, err = client:ApI():load({ id = "example_id" })
+local api, err = client:Api():load()
 if err then error(err) end
 print(api)
 ```
@@ -62,7 +62,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local apis, err = client:ApI():list()
+local apis, err = client:Api():list()
 if err then error(err) end
 ```
 
@@ -120,7 +120,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:ApI():list()
+local result, err = client:Api():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -199,7 +199,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
-| `ApI` | `(data) -> ApIEntity` | Create an ApI entity instance. |
+| `Api` | `(data) -> ApiEntity` | Create an Api entity instance. |
 
 ### Entity interface
 
@@ -228,34 +228,19 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local ap_i, err = client:ApI():load({ id = "example_id" })
+    local api, err = client:Api():load()
     if err then error(err) end
-    -- ap_i is the loaded record
+    -- api is the loaded record
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
 
 ### Entities
 
-#### ApI
+#### Api
 
 | Field | Description |
 | --- | --- |
-| `avgResponseTime` | Average response time in milliseconds |
-| `baseUrl` | Base URL of the API |
-| `category` | Category of the API |
-| `cors` | Whether CORS is enabled |
-| `dateAdded` | Timestamp when API was added to the database |
-| `description` | Description of the API functionality |
-| `documentationUrl` | URL to the API documentation |
-| `endpoints` | Number of endpoints available |
-| `errorRate` | Error rate percentage of the API |
-| `healthScore` | Health score of the API (0-100) |
-| `id` | Unique identifier for the API |
-| `lastChecked` | Timestamp of last health check |
-| `name` | Name of the API |
-| `reliability` | Reliability percentage of the API |
-| `tags` | Tags associated with the API |
 
 Operations: List, Load.
 
@@ -266,9 +251,9 @@ API path: `/api/list`
 ## Entities
 
 
-### ApI
+### Api
 
-Create an instance: `local ap_i = client:ApI(nil)`
+Create an instance: `local api = client:Api(nil)`
 
 #### Operations
 
@@ -277,36 +262,16 @@ Create an instance: `local ap_i = client:ApI(nil)`
 | `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `avgResponseTime` | `number` | Average response time in milliseconds |
-| `baseUrl` | `string` | Base URL of the API |
-| `category` | `string` | Category of the API |
-| `cors` | `boolean` | Whether CORS is enabled |
-| `dateAdded` | `string` | Timestamp when API was added to the database |
-| `description` | `string` | Description of the API functionality |
-| `documentationUrl` | `string` | URL to the API documentation |
-| `endpoints` | `number` | Number of endpoints available |
-| `errorRate` | `number` | Error rate percentage of the API |
-| `healthScore` | `number` | Health score of the API (0-100) |
-| `id` | `string` | Unique identifier for the API |
-| `lastChecked` | `string` | Timestamp of last health check |
-| `name` | `string` | Name of the API |
-| `reliability` | `number` | Reliability percentage of the API |
-| `tags` | `table` | Tags associated with the API |
-
 #### Example: Load
 
 ```lua
-local ap_i, err = client:ApI():load({ id = "ap_i_id" })
+local api, err = client:Api():load()
 ```
 
 #### Example: List
 
 ```lua
-local ap_is, err = client:ApI():list()
+local apis, err = client:Api():list()
 ```
 
 ## Features
@@ -471,7 +436,7 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local api = client:ApI()
+local api = client:Api()
 api:list()
 
 -- api:data_get() now returns the api data from the last list

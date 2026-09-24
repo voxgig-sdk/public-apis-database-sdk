@@ -41,9 +41,9 @@ client = PublicApisDatabaseSDK.test
 
 ### Instance Methods
 
-#### `ApI(data = nil)`
+#### `Api(data = nil)`
 
-Create a new `ApI` entity instance. Pass `nil` for no initial data.
+Create a new `Api` entity instance. Pass `nil` for no initial data.
 
 #### `options_map -> Hash`
 
@@ -83,31 +83,11 @@ same parameters as `direct()`. Raises on error.
 
 ---
 
-## ApIEntity
+## ApiEntity
 
 ```ruby
-ap_i = client.ApI
+api = client.Api
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `avgResponseTime` | `Integer` | No | Average response time in milliseconds |
-| `baseUrl` | `String` | No | Base URL of the API |
-| `category` | `String` | No | Category of the API |
-| `cors` | `Boolean` | No | Whether CORS is enabled |
-| `dateAdded` | `String` | No | Timestamp when API was added to the database |
-| `description` | `String` | Yes | Description of the API functionality |
-| `documentationUrl` | `String` | Yes | URL to the API documentation |
-| `endpoints` | `Integer` | No | Number of endpoints available |
-| `errorRate` | `Float` | No | Error rate percentage of the API |
-| `healthScore` | `Integer` | No | Health score of the API (0-100) |
-| `id` | `String` | Yes | Unique identifier for the API |
-| `lastChecked` | `String` | No | Timestamp of last health check |
-| `name` | `String` | Yes | Name of the API |
-| `reliability` | `Float` | No | Reliability percentage of the API |
-| `tags` | `Array` | No | Tags associated with the API |
 
 ### Operations
 
@@ -116,7 +96,7 @@ ap_i = client.ApI
 List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.ApI.list
+results = client.Api.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -124,7 +104,7 @@ results = client.ApI.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ApI.load({ "id" => "ap_i_id" })
+result = client.Api.load()
 ```
 
 ### Common Methods
@@ -147,7 +127,7 @@ Set the entity match criteria.
 
 #### `make -> Entity`
 
-Create a new `ApIEntity` instance with the same client and
+Create a new `ApiEntity` instance with the same client and
 options.
 
 #### `get_name -> String`

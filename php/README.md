@@ -4,7 +4,7 @@
 
 The PHP SDK for the PublicApisDatabase API — an entity-oriented client using PHP conventions.
 
-The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->ApI()` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->Api()` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
 
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
@@ -36,10 +36,10 @@ $client = new PublicApisDatabaseSDK();
 ```php
 try {
     // list() returns entity instances; data_get() reads each record.
-    $apis = $client->ApI()->list();
+    $apis = $client->Api()->list();
     foreach ($apis as $record) {
         $item = $record->data_get();
-        echo $item["id"] . " " . $item["avgResponseTime"] . "\n";
+        echo json_encode($item) . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -50,8 +50,8 @@ try {
 
 ```php
 try {
-    // load() returns the ENTITY — call data_get() for the ApI record (throws on error).
-    $api = $client->ApI()->load(["id" => "example_id"]);
+    // load() returns the ENTITY — call data_get() for the Api record (throws on error).
+    $api = $client->Api()->load();
     print_r($api->data_get());
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -66,7 +66,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $apis = $client->ApI()->list();
+    $apis = $client->Api()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -133,17 +133,14 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```php
-$client = PublicApisDatabaseSDK::test([
-    "entity" => ["api" => ["test01" => ["id" => "test01"]]],
-]);
+$client = PublicApisDatabaseSDK::test();
 
 // list() returns entity instances (throws on error);
 // call data_get() for the mock record.
-$api = $client->ApI()->list();
+$api = $client->Api()->list();
 print_r(array_map(fn($item) => $item->data_get(), $api));
 ```
 
@@ -223,7 +220,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `ApI` | `($data): ApIEntity` | Create an ApI entity instance. |
+| `Api` | `($data): ApiEntity` | Create an Api entity instance. |
 
 ### Entity interface
 
@@ -260,25 +257,10 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 ### Entities
 
-#### ApI
+#### Api
 
 | Field | Description |
 | --- | --- |
-| `avgResponseTime` | Average response time in milliseconds |
-| `baseUrl` | Base URL of the API |
-| `category` | Category of the API |
-| `cors` | Whether CORS is enabled |
-| `dateAdded` | Timestamp when API was added to the database |
-| `description` | Description of the API functionality |
-| `documentationUrl` | URL to the API documentation |
-| `endpoints` | Number of endpoints available |
-| `errorRate` | Error rate percentage of the API |
-| `healthScore` | Health score of the API (0-100) |
-| `id` | Unique identifier for the API |
-| `lastChecked` | Timestamp of last health check |
-| `name` | Name of the API |
-| `reliability` | Reliability percentage of the API |
-| `tags` | Tags associated with the API |
 
 Operations: List, Load.
 
@@ -289,9 +271,9 @@ API path: `/api/list`
 ## Entities
 
 
-### ApI
+### Api
 
-Create an instance: `$ap_i = $client->ApI();`
+Create an instance: `$api = $client->Api();`
 
 #### Operations
 
@@ -300,38 +282,18 @@ Create an instance: `$ap_i = $client->ApI();`
 | `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `avgResponseTime` | `int` | Average response time in milliseconds |
-| `baseUrl` | `string` | Base URL of the API |
-| `category` | `string` | Category of the API |
-| `cors` | `bool` | Whether CORS is enabled |
-| `dateAdded` | `string` | Timestamp when API was added to the database |
-| `description` | `string` | Description of the API functionality |
-| `documentationUrl` | `string` | URL to the API documentation |
-| `endpoints` | `int` | Number of endpoints available |
-| `errorRate` | `float` | Error rate percentage of the API |
-| `healthScore` | `int` | Health score of the API (0-100) |
-| `id` | `string` | Unique identifier for the API |
-| `lastChecked` | `string` | Timestamp of last health check |
-| `name` | `string` | Name of the API |
-| `reliability` | `float` | Reliability percentage of the API |
-| `tags` | `array` | Tags associated with the API |
-
 #### Example: Load
 
 ```php
-// load() returns the ENTITY — call data_get() for the ApI record (throws on error).
-$ap_i = $client->ApI()->load(["id" => "ap_i_id"]);
+// load() returns the ENTITY — call data_get() for the Api record (throws on error).
+$api = $client->Api()->load();
 ```
 
 #### Example: List
 
 ```php
-// list() returns an array of ApI records (throws on error).
-$ap_is = $client->ApI()->list();
+// list() returns an array of Api records (throws on error).
+$apis = $client->Api()->list();
 ```
 
 ## Features
@@ -496,7 +458,7 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$api = $client->ApI();
+$api = $client->Api();
 $api->list();
 
 // $api->data_get() now returns the api data from the last list

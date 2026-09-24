@@ -5,7 +5,7 @@
 The TypeScript SDK for the PublicApisDatabase API — a type-safe, entity-oriented client with full async/await support.
 
 The API is exposed as capitalised, semantic **Entities** — e.g.
-`client.ApI()` — each with a small set of operations (`list`, `load`)
+`client.Api()` — each with a small set of operations (`list`, `load`)
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
@@ -35,12 +35,12 @@ const client = new PublicApisDatabaseSDK()
 
 ### 2. List api records
 
-`list()` resolves to an array of ApI ENTITIES — every operation
+`list()` resolves to an array of Api ENTITIES — every operation
 resolves to entities, not raw records. Iterate them directly, and call
 `.data()` on one for the record it holds:
 
 ```ts
-const apis = await client.ApI().list()
+const apis = await client.Api().list()
 
 for (const api of apis) {
   console.log(api)
@@ -53,7 +53,7 @@ for (const api of apis) {
 
 ```ts
 try {
-  const api = await client.ApI().load({ id: 'example_id' })
+  const api = await client.Api().load()
   console.log(api)
 } catch (err) {
   console.error('load failed:', err)
@@ -67,7 +67,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const apis = await client.ApI().list()
+  const apis = await client.Api().list()
   console.log(apis)
 } catch (err) {
   console.error('list failed:', err)
@@ -134,7 +134,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = PublicApisDatabaseSDK.test()
 
-const api = await client.ApI().list()
+const api = await client.Api().list()
 // api is the entity, populated with mock response data
 // — call api.data() for the record itself
 console.log(api)
@@ -152,14 +152,14 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.ApI()
+const entity = client.Api()
 
 // First call runs the operation and stores its result
 await entity.list()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id)
+console.log(data)
 ```
 
 ### Add custom middleware
@@ -235,7 +235,7 @@ new PublicApisDatabaseSDK(options?: {
 | `utility()` | `Utility` | Deep copy of the SDK utility object. |
 | `prepare(fetchargs?)` | `Promise<FetchDef>` | Build an HTTP request definition without sending it. |
 | `direct(fetchargs?)` | `Promise<DirectResult>` | Build and send an HTTP request. |
-| `ApI(data?)` | `ApIEntity` | Create an ApI entity instance. |
+| `Api(data?)` | `ApiEntity` | Create an Api entity instance. |
 | `tester(testopts?, sdkopts?)` | `PublicApisDatabaseSDK` | Create a test-mode client instance. |
 
 #### Static methods
@@ -303,25 +303,10 @@ The `prepare()` method returns:
 
 ### Entities
 
-#### ApI
+#### Api
 
 | Field | Description |
 | --- | --- |
-| `avgResponseTime` | Average response time in milliseconds |
-| `baseUrl` | Base URL of the API |
-| `category` | Category of the API |
-| `cors` | Whether CORS is enabled |
-| `dateAdded` | Timestamp when API was added to the database |
-| `description` | Description of the API functionality |
-| `documentationUrl` | URL to the API documentation |
-| `endpoints` | Number of endpoints available |
-| `errorRate` | Error rate percentage of the API |
-| `healthScore` | Health score of the API (0-100) |
-| `id` | Unique identifier for the API |
-| `lastChecked` | Timestamp of last health check |
-| `name` | Name of the API |
-| `reliability` | Reliability percentage of the API |
-| `tags` | Tags associated with the API |
 
 Operations: list, load.
 
@@ -332,9 +317,9 @@ API path: `/api/list`
 ## Entities
 
 
-### ApI
+### Api
 
-Create an instance: `const ap_i = client.ApI()`
+Create an instance: `const api = client.Api()`
 
 #### Operations
 
@@ -343,36 +328,16 @@ Create an instance: `const ap_i = client.ApI()`
 | `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `avgResponseTime` | `number` | Average response time in milliseconds |
-| `baseUrl` | `string` | Base URL of the API |
-| `category` | `string` | Category of the API |
-| `cors` | `boolean` | Whether CORS is enabled |
-| `dateAdded` | `string` | Timestamp when API was added to the database |
-| `description` | `string` | Description of the API functionality |
-| `documentationUrl` | `string` | URL to the API documentation |
-| `endpoints` | `number` | Number of endpoints available |
-| `errorRate` | `number` | Error rate percentage of the API |
-| `healthScore` | `number` | Health score of the API (0-100) |
-| `id` | `string` | Unique identifier for the API |
-| `lastChecked` | `string` | Timestamp of last health check |
-| `name` | `string` | Name of the API |
-| `reliability` | `number` | Reliability percentage of the API |
-| `tags` | `any[]` | Tags associated with the API |
-
 #### Example: Load
 
 ```ts
-const ap_i = await client.ApI().load({ id: 'ap_i_id' })
+const api = await client.Api().load()
 ```
 
 #### Example: List
 
 ```ts
-const ap_is = await client.ApI().list()
+const apis = await client.Api().list()
 ```
 
 ## Features
@@ -529,7 +494,7 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const api = client.ApI()
+const api = client.Api()
 await api.list()
 
 // api.data() now returns the api data from the last `list`

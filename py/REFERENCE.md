@@ -41,9 +41,9 @@ client = PublicApisDatabaseSDK.test()
 
 ### Instance Methods
 
-#### `ApI(data=None)`
+#### `Api(data=None)`
 
-Create a new `ApIEntity` instance. Pass `None` for no initial data.
+Create a new `ApiEntity` instance. Pass `None` for no initial data.
 
 #### `options_map() -> dict`
 
@@ -77,31 +77,11 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 
 ---
 
-## ApIEntity
+## ApiEntity
 
 ```python
-ap_i = client.ApI()
+api = client.Api()
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `avgResponseTime` | `int` | No | Average response time in milliseconds |
-| `baseUrl` | `str` | No | Base URL of the API |
-| `category` | `str` | No | Category of the API |
-| `cors` | `bool` | No | Whether CORS is enabled |
-| `dateAdded` | `str` | No | Timestamp when API was added to the database |
-| `description` | `str` | Yes | Description of the API functionality |
-| `documentationUrl` | `str` | Yes | URL to the API documentation |
-| `endpoints` | `int` | No | Number of endpoints available |
-| `errorRate` | `float` | No | Error rate percentage of the API |
-| `healthScore` | `int` | No | Health score of the API (0-100) |
-| `id` | `str` | Yes | Unique identifier for the API |
-| `lastChecked` | `str` | No | Timestamp of last health check |
-| `name` | `str` | Yes | Name of the API |
-| `reliability` | `float` | No | Reliability percentage of the API |
-| `tags` | `list` | No | Tags associated with the API |
 
 ### Operations
 
@@ -110,9 +90,9 @@ ap_i = client.ApI()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApI().list()
-for ap_i in results:
-    print(ap_i)
+results = client.Api().list()
+for api in results:
+    print(api)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -120,7 +100,7 @@ for ap_i in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ApI().load({"id": "ap_i_id"})
+result = client.Api().load()
 ```
 
 ### Common Methods
@@ -143,7 +123,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `ApIEntity` instance with the same options.
+Create a new `ApiEntity` instance with the same options.
 
 #### `get_name() -> str`
 

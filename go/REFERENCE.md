@@ -47,9 +47,9 @@ client := sdk.TestSDK(testopts, sdkopts)
 
 ### Instance Methods
 
-#### `ApI(data map[string]any) PublicApisDatabaseEntity`
+#### `Api(data map[string]any) PublicApisDatabaseEntity`
 
-Create a new `ApI` entity instance. Pass `nil` for no initial data.
+Create a new `Api` entity instance. Pass `nil` for no initial data.
 
 #### `OptionsMap() map[string]any`
 
@@ -87,32 +87,12 @@ same parameters as `Direct()`.
 
 ---
 
-## ApIEntity
+## ApiEntity
 
 ```go
-apI := client.ApI(nil)
-fmt.Println(apI.GetName()) // "ap_i"
+api := client.Api(nil)
+fmt.Println(api.GetName()) // "api"
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `avgResponseTime` | `int` | No | Average response time in milliseconds |
-| `baseUrl` | `string` | No | Base URL of the API |
-| `category` | `string` | No | Category of the API |
-| `cors` | `bool` | No | Whether CORS is enabled |
-| `dateAdded` | `string` | No | Timestamp when API was added to the database |
-| `description` | `string` | Yes | Description of the API functionality |
-| `documentationUrl` | `string` | Yes | URL to the API documentation |
-| `endpoints` | `int` | No | Number of endpoints available |
-| `errorRate` | `float64` | No | Error rate percentage of the API |
-| `healthScore` | `int` | No | Health score of the API (0-100) |
-| `id` | `string` | Yes | Unique identifier for the API |
-| `lastChecked` | `string` | No | Timestamp of last health check |
-| `name` | `string` | Yes | Name of the API |
-| `reliability` | `float64` | No | Reliability percentage of the API |
-| `tags` | `[]any` | No | Tags associated with the API |
 
 ### Operations
 
@@ -121,7 +101,7 @@ fmt.Println(apI.GetName()) // "ap_i"
 List entities matching the given criteria. Returns an array.
 
 ```go
-results, err := client.ApI(nil).List(nil, nil)
+results, err := client.Api(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -133,7 +113,7 @@ fmt.Println(results)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ApI(nil).Load(map[string]any{"id": "ap_i_id"}, nil)
+result, err := client.Api(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -154,7 +134,7 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 #### `Make() Entity`
 
-Create a new `ApIEntity` instance with the same client and
+Create a new `ApiEntity` instance with the same client and
 options.
 
 #### `GetName() string`

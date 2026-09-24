@@ -1,49 +1,25 @@
 // Typed models for the PublicApisDatabase SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
-export interface ApI {
-  avgResponseTime?: number
-  baseUrl?: string
-  category?: string
-  cors?: boolean
-  dateAdded?: string
-  description: string
-  documentationUrl: string
-  endpoints?: number
-  errorRate?: number
-  healthScore?: number
-  id: string
-  lastChecked?: string
-  name: string
-  reliability?: number
-  tags?: any[]
+export interface Api {
 }
 
-export interface ApILoadMatch {
-  avgResponseTime?: number
-  baseUrl?: string
-  category?: string
-  cors?: boolean
-  dateAdded?: string
-  description?: string
-  documentationUrl?: string
-  endpoints?: number
-  errorRate?: number
-  healthScore?: number
-  id: string
-  lastChecked?: string
-  name?: string
-  reliability?: number
-  tags?: any[]
+export interface ApiLoadMatch {
 }
 
-export interface ApIListMatch {
+export interface ApiListMatch {
   category?: string
   limit?: number
   offset?: number
+
+  // Selects a custom action instead of the plain list:
+  //   'list'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 

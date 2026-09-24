@@ -1,39 +1,11 @@
-export interface ApI {
-    avgResponseTime?: number;
-    baseUrl?: string;
-    category?: string;
-    cors?: boolean;
-    dateAdded?: string;
-    description: string;
-    documentationUrl: string;
-    endpoints?: number;
-    errorRate?: number;
-    healthScore?: number;
-    id: string;
-    lastChecked?: string;
-    name: string;
-    reliability?: number;
-    tags?: any[];
+export interface Api {
 }
-export interface ApILoadMatch {
-    avgResponseTime?: number;
-    baseUrl?: string;
-    category?: string;
-    cors?: boolean;
-    dateAdded?: string;
-    description?: string;
-    documentationUrl?: string;
-    endpoints?: number;
-    errorRate?: number;
-    healthScore?: number;
-    id: string;
-    lastChecked?: string;
-    name?: string;
-    reliability?: number;
-    tags?: any[];
+export interface ApiLoadMatch {
 }
-export interface ApIListMatch {
+export interface ApiListMatch {
     category?: string;
     limit?: number;
     offset?: number;
+    $action?: string;
+    [action: string]: any;
 }

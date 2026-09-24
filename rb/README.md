@@ -4,7 +4,7 @@
 
 The Ruby SDK for the PublicApisDatabase API — an entity-oriented client using idiomatic Ruby conventions.
 
-The SDK exposes the API as capitalised, semantic **Entities** — for example `client.ApI` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Api` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
 
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
@@ -34,10 +34,10 @@ client = PublicApisDatabaseSDK.new
 
 ```ruby
 begin
-  # list returns an Array of ApI records — iterate directly.
-  apis = client.ApI.list
+  # list returns an Array of Api records — iterate directly.
+  apis = client.Api.list
   apis.each do |item|
-    puts "#{item["id"]} #{item["avgResponseTime"]}"
+    puts "#{item}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +48,8 @@ end
 
 ```ruby
 begin
-  # load returns the ENTITY — call data_get for the ApI record (raises on error).
-  api = client.ApI.load({ "id" => "example_id" })
+  # load returns the ENTITY — call data_get for the Api record (raises on error).
+  api = client.Api.load()
   puts api
 rescue => err
   warn "load failed: #{err}"
@@ -63,7 +63,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  apis = client.ApI.list()
+  apis = client.Api.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -126,17 +126,14 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```ruby
-client = PublicApisDatabaseSDK.test({
-  "entity" => { "api" => { "test01" => { "id" => "test01" } } },
-})
+client = PublicApisDatabaseSDK.test
 
 # Entity ops return the ENTITY (raises on error);
 # call data_get for the mock record.
-api = client.ApI.list()
+api = client.Api.list()
 puts api
 ```
 
@@ -213,7 +210,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `ApI` | `(data) -> ApIEntity` | Create an ApI entity instance. |
+| `Api` | `(data) -> ApiEntity` | Create an Api entity instance. |
 
 ### Entity interface
 
@@ -249,25 +246,10 @@ returns a result `Hash` with these keys:
 
 ### Entities
 
-#### ApI
+#### Api
 
 | Field | Description |
 | --- | --- |
-| `avgResponseTime` | Average response time in milliseconds |
-| `baseUrl` | Base URL of the API |
-| `category` | Category of the API |
-| `cors` | Whether CORS is enabled |
-| `dateAdded` | Timestamp when API was added to the database |
-| `description` | Description of the API functionality |
-| `documentationUrl` | URL to the API documentation |
-| `endpoints` | Number of endpoints available |
-| `errorRate` | Error rate percentage of the API |
-| `healthScore` | Health score of the API (0-100) |
-| `id` | Unique identifier for the API |
-| `lastChecked` | Timestamp of last health check |
-| `name` | Name of the API |
-| `reliability` | Reliability percentage of the API |
-| `tags` | Tags associated with the API |
 
 Operations: List, Load.
 
@@ -278,9 +260,9 @@ API path: `/api/list`
 ## Entities
 
 
-### ApI
+### Api
 
-Create an instance: `ap_i = client.ApI`
+Create an instance: `api = client.Api`
 
 #### Operations
 
@@ -289,38 +271,18 @@ Create an instance: `ap_i = client.ApI`
 | `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `avgResponseTime` | `Integer` | Average response time in milliseconds |
-| `baseUrl` | `String` | Base URL of the API |
-| `category` | `String` | Category of the API |
-| `cors` | `Boolean` | Whether CORS is enabled |
-| `dateAdded` | `String` | Timestamp when API was added to the database |
-| `description` | `String` | Description of the API functionality |
-| `documentationUrl` | `String` | URL to the API documentation |
-| `endpoints` | `Integer` | Number of endpoints available |
-| `errorRate` | `Float` | Error rate percentage of the API |
-| `healthScore` | `Integer` | Health score of the API (0-100) |
-| `id` | `String` | Unique identifier for the API |
-| `lastChecked` | `String` | Timestamp of last health check |
-| `name` | `String` | Name of the API |
-| `reliability` | `Float` | Reliability percentage of the API |
-| `tags` | `Array` | Tags associated with the API |
-
 #### Example: Load
 
 ```ruby
-# load returns the ENTITY — call data_get for the ApI record (raises on error).
-ap_i = client.ApI.load({ "id" => "ap_i_id" })
+# load returns the ENTITY — call data_get for the Api record (raises on error).
+api = client.Api.load()
 ```
 
 #### Example: List
 
 ```ruby
-# list returns an Array of ApI records (raises on error).
-ap_is = client.ApI.list
+# list returns an Array of Api records (raises on error).
+apis = client.Api.list
 ```
 
 ## Features
@@ -485,7 +447,7 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-api = client.ApI
+api = client.Api
 api.list()
 
 # api.data_get now returns the api data from the last list

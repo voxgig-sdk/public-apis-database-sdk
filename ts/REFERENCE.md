@@ -48,9 +48,9 @@ const client = PublicApisDatabaseSDK.test()
 
 ### Instance Methods
 
-#### `ApI(data?: object)`
+#### `Api(data?: object)`
 
-Create a new `ApI` entity instance.
+Create a new `Api` entity instance.
 
 **Parameters:**
 
@@ -58,7 +58,7 @@ Create a new `ApI` entity instance.
 | --- | --- | --- |
 | `data` | `object` | Initial entity data. |
 
-**Returns:** `ApIEntity` instance.
+**Returns:** `ApiEntity` instance.
 
 #### `options()`
 
@@ -106,31 +106,31 @@ Alias for `PublicApisDatabaseSDK.test()`.
 
 ---
 
-## ApIEntity
+## ApiEntity
 
 ```ts
-const ap_i = client.ApI()
+const api = client.Api()
 ```
 
-### Fields
+### Actions
 
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `avgResponseTime` | `number` | No | Average response time in milliseconds |
-| `baseUrl` | `string` | No | Base URL of the API |
-| `category` | `string` | No | Category of the API |
-| `cors` | `boolean` | No | Whether CORS is enabled |
-| `dateAdded` | `string` | No | Timestamp when API was added to the database |
-| `description` | `string` | Yes | Description of the API functionality |
-| `documentationUrl` | `string` | Yes | URL to the API documentation |
-| `endpoints` | `number` | No | Number of endpoints available |
-| `errorRate` | `number` | No | Error rate percentage of the API |
-| `healthScore` | `number` | No | Health score of the API (0-100) |
-| `id` | `string` | Yes | Unique identifier for the API |
-| `lastChecked` | `string` | No | Timestamp of last health check |
-| `name` | `string` | Yes | Name of the API |
-| `reliability` | `number` | No | Reliability percentage of the API |
-| `tags` | `any[]` | No | Tags associated with the API |
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `list` | `/api/list` | `client.Api().list({ $action: 'list', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Api record — check the API definition for its shape.
+
+```ts
+const result = await client.Api().list({
+  $action: 'list',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 
@@ -139,7 +139,7 @@ const ap_i = client.ApI()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ApI().list()
+const results = await client.Api().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -147,7 +147,7 @@ const results = await client.ApI().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ApI().load({ id: 'ap_i_id' })
+const result = await client.Api().load()
 ```
 
 ### Common Methods
@@ -164,7 +164,7 @@ Get or set the entity match criteria. Works the same as `data()`.
 
 #### `make()`
 
-Create a new `ApIEntity` instance with the same client and
+Create a new `ApiEntity` instance with the same client and
 options.
 
 #### `client()`

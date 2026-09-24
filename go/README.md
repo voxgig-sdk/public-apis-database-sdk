@@ -4,7 +4,7 @@
 
 The Golang SDK for the PublicApisDatabase API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
-It exposes the API as capitalised, semantic **Entities** — e.g. `client.ApI(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.Api(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
 > Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
@@ -50,21 +50,21 @@ import (
 func main() {
     client := sdk.New()
 
-    // List apI records — the value is the array of records itself.
-    apIs, err := client.ApI(nil).List(nil, nil)
+    // List api records — the value is the array of records itself.
+    apis, err := client.Api(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-    for _, item := range apIs.([]any) {
+    for _, item := range apis.([]any) {
         fmt.Println(item)
     }
 
-    // Load a single apI — the value is the loaded record.
-    apI, err := client.ApI(nil).Load(map[string]any{"id": "example_id"}, nil)
+    // Load a single api — the value is the loaded record.
+    api, err := client.Api(nil).Load(nil, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(apI)
+    fmt.Println(api)
 }
 ```
 
@@ -75,7 +75,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-apis, err := client.ApI(nil).List(nil, nil)
+apis, err := client.Api(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
@@ -144,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-apI, err := client.ApI(nil).List(
+api, err := client.Api(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(apI) // the returned mock data
+fmt.Println(api) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -227,7 +227,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetUtility` | `() *Utility` | Copy of the SDK utility object. |
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
-| `ApI` | `(data map[string]any) PublicApisDatabaseEntity` | Create an ApI entity instance. |
+| `Api` | `(data map[string]any) PublicApisDatabaseEntity` | Create an Api entity instance. |
 
 ### Entity interface (PublicApisDatabaseEntity)
 
@@ -256,34 +256,19 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    apI, err := client.ApI(nil).List(map[string]any{/* fields */}, nil)
+    api, err := client.Api(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // apI is the returned record
+    // api is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
-#### ApI
+#### Api
 
 | Field | Description |
 | --- | --- |
-| `"avgResponseTime"` | Average response time in milliseconds |
-| `"baseUrl"` | Base URL of the API |
-| `"category"` | Category of the API |
-| `"cors"` | Whether CORS is enabled |
-| `"dateAdded"` | Timestamp when API was added to the database |
-| `"description"` | Description of the API functionality |
-| `"documentationUrl"` | URL to the API documentation |
-| `"endpoints"` | Number of endpoints available |
-| `"errorRate"` | Error rate percentage of the API |
-| `"healthScore"` | Health score of the API (0-100) |
-| `"id"` | Unique identifier for the API |
-| `"lastChecked"` | Timestamp of last health check |
-| `"name"` | Name of the API |
-| `"reliability"` | Reliability percentage of the API |
-| `"tags"` | Tags associated with the API |
 
 Operations: List, Load.
 
@@ -294,9 +279,9 @@ API path: `/api/list`
 ## Entities
 
 
-### ApI
+### Api
 
-Create an instance: `apI := client.ApI(nil)`
+Create an instance: `api := client.Api(nil)`
 
 #### Operations
 
@@ -305,44 +290,24 @@ Create an instance: `apI := client.ApI(nil)`
 | `List(match, ctrl)` | List entities matching the criteria. |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `avgResponseTime` | `int` | Average response time in milliseconds |
-| `baseUrl` | `string` | Base URL of the API |
-| `category` | `string` | Category of the API |
-| `cors` | `bool` | Whether CORS is enabled |
-| `dateAdded` | `string` | Timestamp when API was added to the database |
-| `description` | `string` | Description of the API functionality |
-| `documentationUrl` | `string` | URL to the API documentation |
-| `endpoints` | `int` | Number of endpoints available |
-| `errorRate` | `float64` | Error rate percentage of the API |
-| `healthScore` | `int` | Health score of the API (0-100) |
-| `id` | `string` | Unique identifier for the API |
-| `lastChecked` | `string` | Timestamp of last health check |
-| `name` | `string` | Name of the API |
-| `reliability` | `float64` | Reliability percentage of the API |
-| `tags` | `[]any` | Tags associated with the API |
-
 #### Example: Load
 
 ```go
-apI, err := client.ApI(nil).Load(map[string]any{"id": "ap_i_id"}, nil)
+api, err := client.Api(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(apI) // the loaded record
+fmt.Println(api) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-apIs, err := client.ApI(nil).List(nil, nil)
+apis, err := client.Api(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(apIs) // the array of records
+fmt.Println(apis) // the array of records
 ```
 
 ## Features
@@ -503,7 +468,7 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-api := client.ApI(nil)
+api := client.Api(nil)
 api.List(nil, nil)
 
 // api.Data() now returns the api data from the last list

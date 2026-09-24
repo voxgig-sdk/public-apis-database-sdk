@@ -83,133 +83,19 @@ func MakeConfig() map[string]any {
 				"content-type": "application/json",
 			},
 			"entity": map[string]any{
-				"ap_i": map[string]any{},
+				"api": map[string]any{},
 			},
 		},
 		"entity": map[string]any{
-			"ap_i": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"name": "avgResponseTime",
-						"short": "Average response time in milliseconds",
-						"type": "`$INTEGER`",
-					},
-					map[string]any{
-						"format": "uri",
-						"name": "baseUrl",
-						"short": "Base URL of the API",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "category",
-						"short": "Category of the API",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "cors",
-						"short": "Whether CORS is enabled",
-						"type": "`$BOOLEAN`",
-					},
-					map[string]any{
-						"format": "date-time",
-						"name": "dateAdded",
-						"short": "Timestamp when API was added to the database",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "description",
-						"req": true,
-						"short": "Description of the API functionality",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"format": "uri",
-						"name": "documentationUrl",
-						"req": true,
-						"short": "URL to the API documentation",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "endpoints",
-						"short": "Number of endpoints available",
-						"type": "`$INTEGER`",
-					},
-					map[string]any{
-						"format": "float",
-						"name": "errorRate",
-						"short": "Error rate percentage of the API",
-						"type": "`$NUMBER`",
-					},
-					map[string]any{
-						"name": "healthScore",
-						"short": "Health score of the API (0-100)",
-						"type": "`$INTEGER`",
-					},
-					map[string]any{
-						"name": "id",
-						"req": true,
-						"short": "Unique identifier for the API",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"format": "date-time",
-						"name": "lastChecked",
-						"short": "Timestamp of last health check",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "name",
-						"req": true,
-						"short": "Name of the API",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"format": "float",
-						"name": "reliability",
-						"short": "Reliability percentage of the API",
-						"type": "`$NUMBER`",
-					},
-					map[string]any{
-						"name": "tags",
-						"short": "Tags associated with the API",
-						"type": "`$ARRAY`",
-					},
-				},
-				"id": map[string]any{
-					"field": "id",
-					"name": "id",
-				},
-				"name": "ap_i",
+			"api": map[string]any{
+				"fields": []any{},
+				"name": "api",
 				"op": map[string]any{
 					"list": map[string]any{
 						"input": "data",
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "category",
-											"orig": "category",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 50,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "offset",
-											"orig": "offset",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/list",
@@ -221,20 +107,46 @@ func MakeConfig() map[string]any {
 										"lit": "list",
 									},
 								},
+								"parts": []any{
+									"api",
+									"list",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.apis`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "category",
+											"orig": "category",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 50,
+										},
+										map[string]any{
+											"name": "offset",
+											"orig": "offset",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+									},
+								},
 								"select": map[string]any{
+									"$action": "list",
 									"exist": []any{
 										"category",
 										"limit",
 										"offset",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.apis`",
-								},
-								"parts": []any{
-									"api",
-									"list",
 								},
 							},
 						},
@@ -244,7 +156,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/new",
@@ -253,14 +164,16 @@ func MakeConfig() map[string]any {
 										"lit": "new",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"new",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"new",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
