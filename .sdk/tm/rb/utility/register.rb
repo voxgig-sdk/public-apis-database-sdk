@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 PublicApisDatabaseUtility.registrar = ->(u) {
   u.clean = PublicApisDatabaseUtilities::Clean
+  u.clean_add = PublicApisDatabaseUtilities::CleanAdd
+  u.clean_explain = PublicApisDatabaseUtilities::CleanExplain
   u.done = PublicApisDatabaseUtilities::Done
   u.make_error = PublicApisDatabaseUtilities::MakeError
   u.feature_add = PublicApisDatabaseUtilities::FeatureAdd

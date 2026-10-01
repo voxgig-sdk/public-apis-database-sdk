@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 PublicApisDatabaseUtility::setRegistrar(function (PublicApisDatabaseUtility $u): void {
     $u->clean = [PublicApisDatabaseClean::class, 'call'];
+    $u->clean_add = [PublicApisDatabaseClean::class, 'add'];
+    $u->clean_explain = [PublicApisDatabaseDone::class, 'clean_explain'];
     $u->done = [PublicApisDatabaseDone::class, 'call'];
     $u->make_error = [PublicApisDatabaseMakeError::class, 'call'];
     $u->feature_add = [PublicApisDatabaseFeatureAdd::class, 'call'];
