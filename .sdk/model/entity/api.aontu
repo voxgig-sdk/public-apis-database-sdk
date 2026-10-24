@@ -46,11 +46,10 @@ main: kit: entity: api: {
           o: "/api/list"
           q: {
             "$action": "list"
-            exist: [
-              "category"
-              "limit"
-              "offset"
-            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -78,6 +77,10 @@ main: kit: entity: api: {
           }
           m: "GET"
           o: "/new"
+          rs: {
+            kind: "raw"
+            media: "text/html"
+          }
           s: [
             {
               lit: "new"

@@ -3,5 +3,13 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Production server",
+      "Successfully retrieved list of public APIs",
+      "Successfully retrieved the API submission form",
+      "This API provides a comprehensive collection of free public APIs suitable for students and developers. It features endpoints for various functionalities, allowing users to easily access and integrate multiple services into their applications."
+    ]
+  }
 }

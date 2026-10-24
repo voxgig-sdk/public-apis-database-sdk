@@ -18,14 +18,32 @@ const PLAN = [
         "args": [],
         "select": {
             "category": "v1",
-            "limit": "v1",
-            "offset": "v1"
+            "limit": 50,
+            "offset": 0
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "category",
             "limit",
             "offset"
+        ],
+        "queryArgs": [
+            {
+                "name": "category",
+                "wire": "category"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "offset",
+                "wire": "offset"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -33,23 +51,23 @@ const PLAN = [
             "count": 624,
             "apis": [
                 {
-                    "avgResponseTime": 1,
-                    "baseUrl": "x",
-                    "category": "x",
-                    "cors": true,
-                    "dateAdded": "2026-01-01T00:00:00Z",
+                    "id": "x",
+                    "name": "x",
                     "description": "x",
                     "documentationUrl": "x",
-                    "endpoints": 1,
-                    "errorRate": 1,
+                    "baseUrl": "x",
                     "healthScore": 1,
-                    "id": "x",
-                    "lastChecked": "2026-01-01T00:00:00Z",
-                    "name": "x",
                     "reliability": 1,
+                    "errorRate": 1,
+                    "avgResponseTime": 1,
+                    "cors": true,
+                    "endpoints": 1,
+                    "category": "x",
                     "tags": [
                         "x"
-                    ]
+                    ],
+                    "lastChecked": "2026-01-01T00:00:00Z",
+                    "dateAdded": "2026-01-01T00:00:00Z"
                 }
             ]
         },
@@ -64,7 +82,12 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "text/html"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": null,

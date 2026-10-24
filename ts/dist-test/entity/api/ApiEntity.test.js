@@ -54,6 +54,53 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Api();
         (0, node_assert_1.default)(null != ent);
     });
+    class FailHook extends __1.BaseFeature {
+        name = 'failhook';
+        version = '0.0.1';
+        active = true;
+        unexpected = 0;
+        init() { }
+        PreSpec() { throw new Error('api hook failed'); }
+        PreUnexpected() { this.unexpected++; }
+    }
+    (0, node_test_1.test)('stream-error', async () => {
+        const offline = { net: { offline: true } };
+        await node_assert_1.default.rejects(async () => {
+            for await (const _item of __1.PublicApisDatabaseSDK.test(offline).Api().stream('list')) { }
+        }, /offline/);
+        for await (const _item of __1.PublicApisDatabaseSDK.test(offline).Api()
+            .stream('list', undefined, { ctrl: { throw: false } })) { }
+        if (null != __1.config.feature?.rbac) {
+            const denied = __1.PublicApisDatabaseSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
+            await node_assert_1.default.rejects(async () => {
+                for await (const _item of denied.Api().stream('list')) { }
+            }, (err) => 'rbac_denied' === err.code);
+        }
+    });
+    (0, node_test_1.test)('stream-ctrl', async () => {
+        const explain = {};
+        const ctrl = { explain };
+        for await (const _item of __1.PublicApisDatabaseSDK.test().Api().stream('list', undefined, { ctrl })) { }
+        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
+        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
+    });
+    (0, node_test_1.test)('unexpected', async () => {
+        const hook = new FailHook();
+        const client = new __1.PublicApisDatabaseSDK({ feature: { test: { active: true } }, extend: [hook] });
+        await node_assert_1.default.rejects(client.Api().list(), /hook failed/);
+        (0, node_assert_1.default)(0 < hook.unexpected);
+        const fired = hook.unexpected;
+        node_assert_1.default.strictEqual(await client.Api().list(undefined, { throw: false }), undefined);
+        (0, node_assert_1.default)(fired < hook.unexpected);
+    });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.PublicApisDatabaseSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Api().list({ "category": 1 }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.PUBLIC_APIS_DATABASE_TEST_LIVE;
         for (const op of ['list', 'load']) {
@@ -62,7 +109,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "api", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /api/list", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "k": "query", "n": "category", "or": "category", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "ex": 50, "k": "query", "n": "limit", "or": "limit", "r": false, "t": "`$INTEGER`", "index$": 1 }, { "a": true, "ex": 0, "k": "query", "n": "offset", "or": "offset", "r": false, "t": "`$INTEGER`", "index$": 2 }] }, "k": "http", "m": "GET", "o": "/api/list", "q": { "$action": "list", "exist": ["category", "limit", "offset"] }, "r": {}, "s": [{ "lit": "api" }, { "lit": "list" }], "t": { "req": "`reqdata`", "res": "`body.apis`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /new", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/new", "q": {}, "r": {}, "s": [{ "lit": "new" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "api", "name__orig": "api", "Name": "Api", "name_": "api", "name-": "api", "NAME": "API", "index$": 0 }, { "active": true, "entity": "api", "key$": "BasicApiFlow", "kind": "basic", "name": "BasicApiFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "api_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "api_ref01", "srcdatavar": "api_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-api_ref01" } }], "index$": 1 }] }, 'Api', { "GET /api/list": { "protocol": "http", "parameters": [{ "name": "category", "in": "query", "description": "Filter APIs by category", "required": false, "schema": { "type": "string" }, "index$": 0 }, { "name": "limit", "in": "query", "description": "Number of APIs to return", "required": false, "schema": { "type": "integer", "default": 50, "minimum": 1, "maximum": 100 }, "index$": 1 }, { "name": "offset", "in": "query", "description": "Offset for pagination", "required": false, "schema": { "type": "integer", "default": 0, "minimum": 0 }, "index$": 2 }] }, "GET /new": { "protocol": "http", "parameters": [] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "api", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /api/list", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "k": "query", "n": "category", "or": "category", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "ex": 50, "k": "query", "n": "limit", "or": "limit", "r": false, "t": "`$INTEGER`", "index$": 1 }, { "a": true, "ex": 0, "k": "query", "n": "offset", "or": "offset", "r": false, "t": "`$INTEGER`", "index$": 2 }] }, "k": "http", "m": "GET", "o": "/api/list", "q": { "$action": "list" }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "list" }], "t": { "req": "`reqdata`", "res": "`body.apis`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /new", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/new", "q": {}, "r": {}, "rs": { "kind": "raw", "media": "text/html" }, "s": [{ "lit": "new" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "api", "name__orig": "api", "Name": "Api", "name_": "api", "name-": "api", "NAME": "API", "index$": 0 }, { "active": true, "entity": "api", "key$": "BasicApiFlow", "kind": "basic", "name": "BasicApiFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "api_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "api_ref01", "srcdatavar": "api_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-api_ref01" } }], "index$": 1 }] }, 'Api', { "GET /api/list": { "protocol": "http", "parameters": [{ "name": "category", "in": "query", "description": "Filter APIs by category", "required": false, "schema": { "type": "string" }, "index$": 0 }, { "name": "limit", "in": "query", "description": "Number of APIs to return", "required": false, "schema": { "type": "integer", "default": 50, "minimum": 1, "maximum": 100 }, "index$": 1 }, { "name": "offset", "in": "query", "description": "Offset for pagination", "required": false, "schema": { "type": "integer", "default": 0, "minimum": 0 }, "index$": 2 }] }, "GET /new": { "protocol": "http", "parameters": [] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -79,6 +126,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(null != api_ref01_data_dt0);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

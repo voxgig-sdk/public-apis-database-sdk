@@ -93,6 +93,7 @@ class PublicApisDatabaseConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -164,11 +165,10 @@ class PublicApisDatabaseConfig
                   ],
                   'select' => [
                     '$action' => 'list',
-                    'exist' => [
-                      'category',
-                      'limit',
-                      'offset',
-                    ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -196,6 +196,10 @@ class PublicApisDatabaseConfig
                   ],
                   'args' => [],
                   'select' => [],
+                  'response' => [
+                    'kind' => 'raw',
+                    'media' => 'text/html',
+                  ],
                 ],
               ],
             ],

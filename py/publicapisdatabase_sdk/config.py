@@ -96,6 +96,7 @@ def make_config():
         },
         "optspec": {
           "clearTimer": "`$FUNCTION`",
+          "now": "`$FUNCTION`",
           "setTimer": "`$FUNCTION`",
         },
         "strict": False,
@@ -167,11 +168,10 @@ def make_config():
                 },
                 "select": {
                   "$action": "list",
-                  "exist": [
-                    "category",
-                    "limit",
-                    "offset",
-                  ],
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],
@@ -199,6 +199,10 @@ def make_config():
                 },
                 "args": {},
                 "select": {},
+                "response": {
+                  "kind": "raw",
+                  "media": "text/html",
+                },
               },
             ],
           },

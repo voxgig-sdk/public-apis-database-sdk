@@ -87,6 +87,7 @@ class Config {
             },
             "optspec": {
                 "clearTimer": "`$FUNCTION`",
+                "now": "`$FUNCTION`",
                 "setTimer": "`$FUNCTION`"
             },
             "strict": false,
@@ -157,12 +158,11 @@ class Config {
                                 ]
                             },
                             "select": {
-                                "$action": "list",
-                                "exist": [
-                                    "category",
-                                    "limit",
-                                    "offset"
-                                ]
+                                "$action": "list"
+                            },
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
                             }
                         }
                     ]
@@ -189,7 +189,11 @@ class Config {
                                 "res": "`body`"
                             },
                             "args": {},
-                            "select": {}
+                            "select": {},
+                            "response": {
+                                "kind": "raw",
+                                "media": "text/html"
+                            }
                         }
                     ]
                 }

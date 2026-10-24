@@ -79,6 +79,7 @@ module PublicApisDatabaseConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -150,11 +151,10 @@ module PublicApisDatabaseConfig
                   },
                   "select" => {
                     "$action" => "list",
-                    "exist" => [
-                      "category",
-                      "limit",
-                      "offset",
-                    ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -182,6 +182,10 @@ module PublicApisDatabaseConfig
                   },
                   "args" => {},
                   "select" => {},
+                  "response" => {
+                    "kind" => "raw",
+                    "media" => "text/html",
+                  },
                 },
               ],
             },
